@@ -55,7 +55,7 @@ class ProfileController extends Controller
 
         Auth::logout();
 
-        if($user) {
+        if ($user) {
             $user->delete();
         }
 
