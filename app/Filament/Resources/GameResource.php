@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GameResource\Pages;
-use App\Filament\Resources\GameResource\RelationManagers;
 use App\Models\Game;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class GameResource extends Resource
 {
@@ -53,14 +50,14 @@ class GameResource extends Resource
                 Tables\Columns\TextColumn::make('score')
                     ->label('Score')
                     ->getStateUsing(function ($record) {
-                        return $record->host_score . ' : ' . $record->visitor_score;
+                        return $record->host_score.' : '.$record->visitor_score;
                     })
                     ->sortable(),
                 Tables\Columns\TextColumn::make('visitor.name')
                     ->label('Visitor Team')
                     ->sortable()
                     ->searchable(),
-                ])
+            ])
             ->filters([
                 //
             ])
