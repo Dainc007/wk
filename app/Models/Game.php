@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Models;
@@ -19,7 +20,6 @@ class Game extends Model
         'host_score',
         'visitor_score',
     ];
-
 
     /**
      * Get the host team.
