@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Models;
@@ -15,6 +16,6 @@ class League extends Model
     protected $fillable = [
         'name',
         'level',
-        'country'
+        'country',
     ];
 }

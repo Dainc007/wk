@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Database\Factories;
@@ -21,7 +22,7 @@ class LeagueFactory extends Factory
         return [
             'name' => $this->faker->country(),
             'level' => rand(0, 2),
-            'country' => $this->faker->countryCode()
+            'country' => $this->faker->countryCode(),
         ];
     }
 }
