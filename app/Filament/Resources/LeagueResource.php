@@ -4,9 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Enums\Countries;
 use App\Filament\Resources\LeagueResource\Pages;
-use App\Filament\Resources\LeagueResource\RelationManagers;
 use App\Models\League;
-use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -14,8 +12,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class LeagueResource extends Resource
 {
@@ -58,7 +54,7 @@ class LeagueResource extends Resource
                     ->label('Level')
                     ->sortable()
                     ->searchable(),
-                ])
+            ])
             ->filters([
                 //
             ])
