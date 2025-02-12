@@ -2,17 +2,20 @@
 
 namespace App\Policies;
 
-use App\Models\Team;
 use App\Models\User;
+use App\Models\Team;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TeamPolicy
 {
+    use HandlesAuthorization;
+
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->can('view_any_team');
     }
 
     /**
@@ -20,7 +23,7 @@ class TeamPolicy
      */
     public function view(User $user, Team $team): bool
     {
-        return true;
+        return $user->can('view_team');
     }
 
     /**
@@ -28,7 +31,7 @@ class TeamPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->can('create_team');
     }
 
     /**
@@ -36,7 +39,7 @@ class TeamPolicy
      */
     public function update(User $user, Team $team): bool
     {
-        return true;
+        return $user->can('update_team');
     }
 
     /**
@@ -44,22 +47,62 @@ class TeamPolicy
      */
     public function delete(User $user, Team $team): bool
     {
-        return true;
+        return $user->can('delete_team');
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Determine whether the user can bulk delete.
      */
-    public function restore(User $user, Team $team): bool
+    public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->can('delete_any_team');
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Determine whether the user can permanently delete.
      */
     public function forceDelete(User $user, Team $team): bool
     {
-        return true;
+        return $user->can('force_delete_team');
+    }
+
+    /**
+     * Determine whether the user can permanently bulk delete.
+     */
+    public function forceDeleteAny(User $user): bool
+    {
+        return $user->can('force_delete_any_team');
+    }
+
+    /**
+     * Determine whether the user can restore.
+     */
+    public function restore(User $user, Team $team): bool
+    {
+        return $user->can('restore_team');
+    }
+
+    /**
+     * Determine whether the user can bulk restore.
+     */
+    public function restoreAny(User $user): bool
+    {
+        return $user->can('restore_any_team');
+    }
+
+    /**
+     * Determine whether the user can replicate.
+     */
+    public function replicate(User $user, Team $team): bool
+    {
+        return $user->can('replicate_team');
+    }
+
+    /**
+     * Determine whether the user can reorder.
+     */
+    public function reorder(User $user): bool
+    {
+        return $user->can('reorder_team');
     }
 }
