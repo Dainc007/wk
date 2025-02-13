@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Fixture\StoreFixtureRequest;
-use App\Http\Requests\Fixture\UpdateFixtureRequest;
-use App\Models\Fixture;
+use App\Http\Requests\Competition\StoreCompetitionRequest;
+use App\Http\Requests\Competition\UpdateCompetitionRequest;
+use App\Models\Competition;
 
-class FixtureController extends Controller
+class CompetitionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +29,7 @@ class FixtureController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreFixtureRequest $request)
+    public function store(StoreCompetitionRequest $request)
     {
         //
     }
@@ -37,7 +37,7 @@ class FixtureController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Fixture $fixture)
+    public function show(Competition $competition)
     {
         //
     }
@@ -45,7 +45,7 @@ class FixtureController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fixture $fixture)
+    public function edit(Competition $competition)
     {
         //
     }
@@ -53,7 +53,7 @@ class FixtureController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFixtureRequest $request, Fixture $fixture)
+    public function update(UpdateCompetitionRequest $request, Competition $competition)
     {
         //
     }
@@ -61,7 +61,7 @@ class FixtureController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fixture $fixture)
+    public function destroy(Competition $competition)
     {
         //
     }
