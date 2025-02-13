@@ -19,6 +19,7 @@ return [
     */
 
     'default' => env('LOG_CHANNEL', 'stack'),
+    'logMissingTranslationKeys' => env('LOG_MISSING_TRANSLATION_KEYS', false),
 
     /*
     |--------------------------------------------------------------------------
