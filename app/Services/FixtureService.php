@@ -9,7 +9,7 @@ use App\Models\Fixture;
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Collection;
 
-class FixtureService
+final class FixtureService
 {
     /**
      * @var Collection<int, Team>
@@ -36,7 +36,7 @@ class FixtureService
         $date = today();
 
         foreach ($meetings as $matches) {
-            if ($date->dayOfWeek == 0) {
+            if ($date->dayOfWeek === 0) {
                 $date->next(Fixture::WEEKDAY);
             } else {
                 $date->next(Fixture::WEEKEND_DAY);

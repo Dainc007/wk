@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Fixture>
  */
-class FixtureFactory extends Factory
+final class FixtureFactory extends Factory
 {
     /**
      * Define the model's default state.

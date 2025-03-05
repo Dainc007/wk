@@ -7,7 +7,7 @@ namespace App\Policies;
 use App\Models\Competition;
 use App\Models\User;
 
-class CompetitionPolicy
+final class CompetitionPolicy
 {
     /**
      * Determine whether the user can view any models.

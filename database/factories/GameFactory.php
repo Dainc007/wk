@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<Game>
  */
-class GameFactory extends Factory
+final class GameFactory extends Factory
 {
     /**
      * Define the model's default state.

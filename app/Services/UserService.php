@@ -6,7 +6,7 @@ namespace App\Services;
 
 use App\Models\User;
 
-class UserService
+final class UserService
 {
     public static function getActiveUsersCount(): int
     {

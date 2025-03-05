@@ -6,7 +6,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateLeagueRequest extends FormRequest
+final class UpdateLeagueRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

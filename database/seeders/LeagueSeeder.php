@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Enums\Countries;
 use App\Models\League;
 use Illuminate\Database\Seeder;
 
-class LeagueSeeder extends Seeder
+final class LeagueSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -8,7 +8,7 @@ use App\Http\Requests\StoreLeagueRequest;
 use App\Http\Requests\UpdateLeagueRequest;
 use App\Models\League;
 
-class LeagueController extends Controller
+final class LeagueController extends Controller
 {
     /**
      * Display a listing of the resource.

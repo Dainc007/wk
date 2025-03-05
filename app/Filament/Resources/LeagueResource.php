@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources;
 
 use App\Enums\Countries;
@@ -13,7 +15,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class LeagueResource extends Resource
+final class LeagueResource extends Resource
 {
     protected static ?string $model = League::class;
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'accepted' => 'Pole :attribute musi zostać zaakceptowane.',
     'accepted_if' => 'Pole :attribute musi zostać zaakceptowane, gdy :other jest :value.',

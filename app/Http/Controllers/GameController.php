@@ -8,7 +8,7 @@ use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\UpdateGameRequest;
 use App\Models\Game;
 
-class GameController extends Controller
+final class GameController extends Controller
 {
     /**
      * Display a listing of the resource.

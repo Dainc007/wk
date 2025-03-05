@@ -8,7 +8,7 @@ use App\Http\Requests\Competition\StoreCompetitionRequest;
 use App\Http\Requests\Competition\UpdateCompetitionRequest;
 use App\Models\Competition;
 
-class CompetitionController extends Controller
+final class CompetitionController extends Controller
 {
     /**
      * Display a listing of the resource.

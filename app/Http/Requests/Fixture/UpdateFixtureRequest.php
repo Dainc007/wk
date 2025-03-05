@@ -6,7 +6,7 @@ namespace App\Http\Requests\Fixture;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateFixtureRequest extends FormRequest
+final class UpdateFixtureRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -8,7 +8,7 @@ use Database\Factories\CompetitionFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Competition extends Model
+final class Competition extends Model
 {
     /** @use HasFactory<CompetitionFactory> */
     use HasFactory;
