@@ -13,7 +13,7 @@ class LeagueController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): void
     {
         //
     }
@@ -21,7 +21,7 @@ class LeagueController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): void
     {
         //
     }
@@ -29,7 +29,7 @@ class LeagueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLeagueRequest $request)
+    public function store(StoreLeagueRequest $request): void
     {
         //
     }
@@ -37,7 +37,7 @@ class LeagueController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(League $league)
+    public function show(League $league): void
     {
         //
     }
@@ -45,7 +45,7 @@ class LeagueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(League $league)
+    public function edit(League $league): void
     {
         //
     }
@@ -53,7 +53,7 @@ class LeagueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLeagueRequest $request, League $league)
+    public function update(UpdateLeagueRequest $request, League $league): void
     {
         //
     }
@@ -61,7 +61,7 @@ class LeagueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(League $league)
+    public function destroy(League $league): void
     {
         //
     }

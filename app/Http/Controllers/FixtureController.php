@@ -13,7 +13,7 @@ class FixtureController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): void
     {
         //
     }
@@ -21,7 +21,7 @@ class FixtureController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): void
     {
         //
     }
@@ -29,7 +29,7 @@ class FixtureController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreFixtureRequest $request)
+    public function store(StoreFixtureRequest $request): void
     {
         //
     }
@@ -37,7 +37,7 @@ class FixtureController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Fixture $fixture)
+    public function show(Fixture $fixture): void
     {
         //
     }
@@ -45,7 +45,7 @@ class FixtureController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fixture $fixture)
+    public function edit(Fixture $fixture): void
     {
         //
     }
@@ -53,7 +53,7 @@ class FixtureController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFixtureRequest $request, Fixture $fixture)
+    public function update(UpdateFixtureRequest $request, Fixture $fixture): void
     {
         //
     }
@@ -61,7 +61,7 @@ class FixtureController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fixture $fixture)
+    public function destroy(Fixture $fixture): void
     {
         //
     }

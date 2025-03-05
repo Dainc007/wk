@@ -49,7 +49,7 @@ class GameResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('score')
                     ->label('Score')
-                    ->getStateUsing(function ($record) {
+                    ->getStateUsing(function ($record): string {
                         return $record->host_score.' : '.$record->visitor_score;
                     })
                     ->sortable(),

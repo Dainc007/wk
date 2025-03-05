@@ -35,14 +35,14 @@ class FixtureService
         $startDate = today();
         $date = today();
 
-        foreach ($meetings as $matchday => $matches) {
+        foreach ($meetings as $matches) {
             if ($date->dayOfWeek == 0) {
                 $date->next(Fixture::WEEKDAY);
             } else {
                 $date->next(Fixture::WEEKEND_DAY);
             }
 
-            foreach ($matches as $index => $teams) {
+            foreach ($matches as $teams) {
                 [$host, $visitor] = $teams;
 
                 (new Fixture([
