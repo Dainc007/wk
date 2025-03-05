@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Middleware;
@@ -20,6 +21,7 @@ class UpgradeToHttpsUnderNgrok
         if (str_ends_with($request->getHost(), '.ngrok-free.app')) {
             URL::forceScheme('https');
         }
+
         return $next($request);
     }
 }

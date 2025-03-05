@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Enums\Countries;
 use App\Models\League;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class LeagueSeeder extends Seeder
@@ -19,7 +18,7 @@ class LeagueSeeder extends Seeder
                 League::create([
                     'name' => $country->name,
                     'country' => $country->value,
-                    'level' => $level
+                    'level' => $level,
                 ]);
             }
         }
