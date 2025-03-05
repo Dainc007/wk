@@ -7,7 +7,7 @@ namespace App\Services;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Log;
 
-class LogService
+final class LogService
 {
     public static function shouldLogMissingTranslationKeys(bool $logMissingTranslationKeys = false): void
     {

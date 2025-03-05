@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<League>
  */
-class LeagueFactory extends Factory
+final class LeagueFactory extends Factory
 {
     /**
      * Define the model's default state.

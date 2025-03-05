@@ -7,7 +7,7 @@ namespace App\Policies;
 use App\Models\Fixture;
 use App\Models\User;
 
-class FixturePolicy
+final class FixturePolicy
 {
     /**
      * Determine whether the user can view any models.

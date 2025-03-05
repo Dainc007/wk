@@ -6,7 +6,7 @@ namespace App\Http\Requests\Competition;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCompetitionRequest extends FormRequest
+final class StoreCompetitionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

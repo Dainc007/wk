@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources\LeagueResource\Pages;
 
 use App\Filament\Resources\LeagueResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditLeague extends EditRecord
+final class EditLeague extends EditRecord
 {
     protected static string $resource = LeagueResource::class;
 

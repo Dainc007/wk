@@ -8,7 +8,7 @@ use App\Http\Requests\Fixture\StoreFixtureRequest;
 use App\Http\Requests\Fixture\UpdateFixtureRequest;
 use App\Models\Fixture;
 
-class FixtureController extends Controller
+final class FixtureController extends Controller
 {
     /**
      * Display a listing of the resource.

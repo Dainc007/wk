@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use App\Models\User;
@@ -11,7 +13,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+final class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -38,6 +40,6 @@ class AppServiceProvider extends ServiceProvider
 
         Vite::prefetch(concurrency: 3)->useAggressivePrefetching();
 
-        Gate::define('viewPulse', fn(User $user): bool => $user->isAdmin());
+        Gate::define('viewPulse', fn (User $user): bool => $user->isAdmin());
     }
 }
