@@ -29,7 +29,7 @@ class UserResource extends Resource
                     ->password()
                     ->required()
                     ->minLength(8)
-                    ->dehydrated(fn ($state) => ! blank($state)),
+                    ->dehydrated(fn ($state): bool => ! blank($state)),
             ]);
     }
 

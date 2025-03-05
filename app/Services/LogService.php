@@ -12,7 +12,7 @@ class LogService
     public static function shouldLogMissingTranslationKeys(bool $logMissingTranslationKeys = false): void
     {
         if ($logMissingTranslationKeys) {
-            Lang::handleMissingKeysUsing(function ($key, $replace, $locale, $fallback) {
+            Lang::handleMissingKeysUsing(function ($key, $replace, $locale, $fallback): void {
                 Log::error("Missing translation key: {$key} in locale: {$locale}");
             });
         }

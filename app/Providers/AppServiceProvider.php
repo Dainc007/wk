@@ -38,6 +38,6 @@ class AppServiceProvider extends ServiceProvider
 
         Vite::prefetch(concurrency: 3)->useAggressivePrefetching();
 
-        Gate::define('viewPulse', fn(User $user) => $user->isAdmin());
+        Gate::define('viewPulse', fn(User $user): bool => $user->isAdmin());
     }
 }

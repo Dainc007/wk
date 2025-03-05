@@ -13,7 +13,7 @@ class CompetitionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): void
     {
         //
     }
@@ -21,7 +21,7 @@ class CompetitionController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): void
     {
         //
     }
@@ -29,7 +29,7 @@ class CompetitionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCompetitionRequest $request)
+    public function store(StoreCompetitionRequest $request): void
     {
         //
     }
@@ -37,7 +37,7 @@ class CompetitionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Competition $competition)
+    public function show(Competition $competition): void
     {
         //
     }
@@ -45,7 +45,7 @@ class CompetitionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Competition $competition)
+    public function edit(Competition $competition): void
     {
         //
     }
@@ -53,7 +53,7 @@ class CompetitionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCompetitionRequest $request, Competition $competition)
+    public function update(UpdateCompetitionRequest $request, Competition $competition): void
     {
         //
     }
@@ -61,7 +61,7 @@ class CompetitionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Competition $competition)
+    public function destroy(Competition $competition): void
     {
         //
     }
