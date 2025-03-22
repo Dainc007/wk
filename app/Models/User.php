@@ -28,6 +28,8 @@ final class User extends Authenticatable
         'email',
         'password',
         'last_seen_at',
+        'platform',
+        'recommended_by',
     ];
 
     /**

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->timestamp('last_seen_at')->nullable();
+            $table->string('platform')->nullable();
+            $table->string('recommended_by')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

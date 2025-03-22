@@ -37,12 +37,16 @@ final class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'platform' => ['required', 'string', 'in:Playstation,Xbox,PC'],
+            'recommended_by' => ['nullable', 'string', 'max:255'],
         ]);
 
         $user = User::create([
-            'name' => $request->name ?? '',
-            'email' => $request->email ?? '',
-            'password' => Hash::make($request->password ?? ''),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'platform' => $request->platform,
+            'recommended_by' => $request->recommended_by,
         ]);
 
         event(new Registered($user));

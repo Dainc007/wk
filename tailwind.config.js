@@ -15,6 +15,13 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                discord: '#7289DA',
+                twitch: '#9146FF',
+                xbox: '#107C10',
+                playstation: '#000000',
+                windows: '#0078D7',
+            },
         },
     },
 
