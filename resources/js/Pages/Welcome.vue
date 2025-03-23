@@ -26,29 +26,92 @@ const props = defineProps({
 const scrollPosition = ref(0);
 const { y } = useScroll(window);
 
+const howItWorks = [
+    {
+        icon: faDiscord,
+        title: 'Create Your Club',
+        description: 'Set up your FIFA 24 Pro Club with custom colors, badges, and players.'
+    },
+    {
+        icon: faTwitch,
+        title: 'Compete in Tournaments',
+        description: 'Join official tournaments and compete against other clubs for rewards.'
+    },
+    {
+        icon: 'svg-users',
+        title: 'Build Your Team',
+        description: 'Recruit players, manage your squad, and develop your team strategy.'
+    }
+];
+
+const stats = [
+    {
+        value: '1000',
+        label: 'Active Clubs'
+    },
+    {
+        value: '5000',
+        label: 'Registered Players'
+    },
+    {
+        value: '100',
+        label: 'Tournaments'
+    },
+    {
+        value: '50',
+        label: 'Countries'
+    }
+];
+
+const features = [
+    {
+        icon: 'svg-shield',
+        title: 'Official Recognition',
+        description: 'Get your club officially recognized in FIFA 24 Pro Clubs.'
+    },
+    {
+        icon: 'svg-star',
+        title: 'Rewards System',
+        description: 'Earn rewards and recognition for tournament achievements.'
+    },
+    {
+        icon: 'svg-globe',
+        title: 'Global Community',
+        description: 'Connect with players from around the world.'
+    }
+];
+
 onMounted(() => {
     y.value = window.scrollY;
     window.addEventListener('scroll', () => {
         scrollPosition.value = window.scrollY;
     });
 
-    // Animate stats numbers
-    const stats = document.querySelectorAll('.stat-number');
-    stats.forEach(stat => {
-        const target = parseInt(stat.dataset.target);
-        gsap.to(stat, {
-            innerHTML: target,
-            duration: 2,
-            ease: 'power1.inOut',
-            snap: { innerHTML: 1 },
-            scrollTrigger: {
-                trigger: stat,
-                start: 'top center',
-                end: 'bottom center',
-                scrub: true
+    // Animate stats numbers when they come into view
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const stat = entry.target;
+                const target = parseInt(stat.dataset.target);
+                gsap.to(stat, {
+                    innerHTML: target,
+                    duration: 2,
+                    ease: 'power1.inOut',
+                    snap: { innerHTML: 1 },
+                    onComplete: () => {
+                        stat.innerHTML = target;
+                    }
+                });
+                statsObserver.unobserve(stat);
             }
         });
+    }, {
+        threshold: 0.1
     });
+
+    // Observe all stat numbers
+    const statNumbers = document.querySelectorAll('.stat-number');
+    statNumbers.forEach(stat => statsObserver.observe(stat));
 });
 </script>
 
@@ -97,7 +160,8 @@ onMounted(() => {
                                 <div class="absolute -left-2 -top-2 h-6 w-6 rounded-full bg-white/20 group-hover:bg-white/30 dark:bg-white/10 dark:group-hover:bg-white/20"></div>
                                 <span class="flex items-center gap-2">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0 2c-6.627 0-12-5.373-12-12S5.373 2 12 2s12 5.373 12 12-5.373 12-12 12zm6.364-11a1 1 0 1 0-1.447.894l.353.353-1.414 1.414-.353-.353a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2a1 1 0 0 0 0-1.414z"/>
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14 4 4"/>
                                     </svg>
                                     Championships
                                     <svg class="h-4 w-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -177,7 +241,7 @@ onMounted(() => {
                                 <div class="absolute -left-2 -top-2 h-6 w-6 rounded-full bg-white/20 dark:bg-white/10"></div>
                                 <div class="flex items-center gap-2">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 17l10 5 10-5M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                        <path d="M12 17l10 5 10-5M2 17l10 5 10-5"/>
                                     </svg>
                                     Register
                                 </div>
@@ -191,47 +255,41 @@ onMounted(() => {
         <!-- Hero Section -->
         <div class="relative pt-24">
             <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <!-- Left Content -->
                     <div class="animate__animated animate__fadeInLeft" :class="{'animate__fadeInLeft': scrollPosition > 0}">
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
-                            <h1 class="text-5xl md:text-6xl font-bold text-primary dark:text-primary mb-6">
-                                Welcome to Pro Clubs
-                            </h1>
-                            <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
-                                Join our community of FIFA 24 Pro Clubs players and compete in official tournaments.
-                            </p>
-                            <div class="flex space-x-4">
-                                <Link
-                                    :href="route('register')"
-                                    class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-primary to-secondary rounded-full hover:from-primary/90 hover:to-secondary/90 transition duration-300 dark:from-primary/80 dark:to-secondary/70 dark:hover:from-primary/90 dark:hover:to-secondary/80"
-                                >
-                                    <div class="inline-flex items-center gap-2">
-                                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0 2c-6.627 0-12-5.373-12-12S5.373 2 12 2s12 5.373 12 12-5.373 12-12 12zm6.364-11a1 1 0 1 0-1.447.894l.353.353-1.414 1.414-.353-.353a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2a1 1 0 0 0 0-1.414z"/>
-                                        </svg>
-                                        Get Started
-                                    </div>
-                                </Link>
-                                <Link
-                                    :href="route('login')"
-                                    class="inline-flex items-center px-8 py-4 text-lg font-semibold text-primary bg-white border border-primary rounded-full hover:bg-primary/5 transition duration-300 dark:bg-gray-800 dark:border-primary/80 dark:hover:bg-primary/10"
-                                >
-                                    <div class="inline-flex items-center gap-2">
-                                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0 2c-6.627 0-12-5.373-12-12S5.373 2 12 2s12 5.373 12 12-5.373 12-12 12zm6.364-11a1 1 0 1 0-1.447.894l.353.353-1.414 1.414-.353-.353a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2a1 1 0 0 0 0-1.414z"/>
-                                        </svg>
-                                        Learn More
-                                    </div>
-                                </Link>
-                            </div>
+                        <h1 class="text-6xl font-bold text-gray-800 dark:text-white mb-6">
+                            Welcome to Pro Clubs
+                        </h1>
+                        <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
+                            Join our community of FIFA 24 Pro Clubs players and compete in official tournaments.
+                        </p>
+                        <div class="flex space-x-4">
+                            <Link
+                                :href="route('register')"
+                                class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-primary to-secondary rounded-full hover:from-primary/90 hover:to-secondary/90 transition duration-300 dark:from-primary/80 dark:to-secondary/70 dark:hover:from-primary/90 dark:hover:to-secondary/80"
+                            >
+                                <div class="inline-flex items-center gap-2">
+                                    <FontAwesomeIcon :icon="faDiscord" class="w-6 h-6" />
+                                    Get Started
+                                </div>
+                            </Link>
+                            <Link
+                                :href="route('login')"
+                                class="inline-flex items-center px-8 py-4 text-lg font-semibold text-primary bg-white border border-primary rounded-full hover:bg-primary/5 transition duration-300 dark:bg-gray-800 dark:border-primary/80 dark:hover:bg-primary/10"
+                            >
+                                <div class="inline-flex items-center gap-2">
+                                    <FontAwesomeIcon :icon="faTwitch" class="w-6 h-6" />
+                                    Learn More
+                                </div>
+                            </Link>
                         </div>
                     </div>
 
                     <!-- Right Image -->
                     <div class="animate__animated animate__fadeInRight" :class="{'animate__fadeInRight': scrollPosition > 0}">
                         <div class="relative w-full aspect-video overflow-hidden rounded-lg shadow-2xl mb-8">
-                            <img src="/images/hero-image.jpg" alt="FIFA Pro Clubs" class="w-full h-full object-cover rounded-lg">
+                            <img src="https://media.contentapi.ea.com/content/dam/ea/fc/fc-24/common/buy/fc24-pre-order-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg" alt="FIFA Pro Clubs" class="w-full h-full object-cover rounded-lg">
                         </div>
                     </div>
                 </div>
@@ -248,15 +306,11 @@ onMounted(() => {
                         </svg>
                         <span class="ml-3 text-xl font-bold text-white">How It Works</span>
                     </div>
-                    <h2 class="text-5xl font-bold text-gray-800 dark:text-white mb-4">
-                    </h2>
-                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div v-for="(step, index) in howItWorks" :key="index" class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
                         <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 mb-4">
-                            <component :is="step.icon" class="w-6 h-6 text-primary dark:text-primary" />
+                            <FontAwesomeIcon :icon="step.icon" class="w-6 h-6 text-primary dark:text-primary" />
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
                             {{ step.title }}
@@ -279,15 +333,11 @@ onMounted(() => {
                         </svg>
                         <span class="ml-3 text-xl font-bold text-white">Community Stats</span>
                     </div>
-                    <h2 class="text-5xl font-bold text-gray-800 dark:text-white mb-4">
-                    </h2>
-                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div v-for="(stat, index) in stats" :key="index" class="stat-card bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-                        <div class="text-4xl font-bold text-primary dark:text-primary mb-2">
-                            {{ stat.value }}
+                        <div class="text-4xl font-bold text-primary dark:text-primary mb-2 stat-number" :data-target="stat.value">
+                            0
                         </div>
                         <div class="text-xl font-semibold text-gray-800 dark:text-white">
                             {{ stat.label }}
@@ -307,10 +357,6 @@ onMounted(() => {
                         </svg>
                         <span class="ml-3 text-xl font-bold text-white">Why Choose Us</span>
                     </div>
-                    <h2 class="text-5xl font-bold text-gray-800 dark:text-white mb-4">
-                    </h2>
-                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div v-for="(feature, index) in features" :key="index" class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
@@ -347,9 +393,7 @@ onMounted(() => {
                     <!-- Discord Card -->
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
                         <div class="flex items-center justify-center w-12 h-12 rounded-full bg-discord/10 dark:bg-discord/20 mb-4">
-                            <svg class="w-6 h-6 text-discord" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0 2c-6.627 0-12-5.373-12-12S5.373 2 12 2s12 5.373 12 12-5.373 12-12 12zm6.364-11a1 1 0 1 0-1.447.894l.353.353-1.414 1.414-.353-.353a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2a1 1 0 0 0 0-1.414z"/>
-                            </svg>
+                            <FontAwesomeIcon :icon="faDiscord" class="w-6 h-6 text-discord" />
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
                             Discord Community
@@ -358,13 +402,10 @@ onMounted(() => {
                             Join our active Discord community to connect with other players, get support, and participate in discussions.
                         </p>
                         <Link
-                            :href="route('discord')"
                             class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-discord rounded-full hover:bg-discord/90 transition duration-300 dark:hover:bg-discord/80"
                         >
                             <div class="inline-flex items-center gap-2">
-                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0 2c-6.627 0-12-5.373-12-12S5.373 2 12 2s12 5.373 12 12-5.373 12-12 12zm6.364-11a1 1 0 1 0-1.447.894l.353.353-1.414 1.414-.353-.353a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2a1 1 0 0 0 0-1.414z"/>
-                                </svg>
+                                <FontAwesomeIcon :icon="faDiscord" class="w-4 h-4" />
                                 Join Discord
                             </div>
                         </Link>
@@ -372,9 +413,7 @@ onMounted(() => {
                     <!-- Twitch Card -->
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
                         <div class="flex items-center justify-center w-12 h-12 rounded-full bg-twitch/10 dark:bg-twitch/20 mb-4">
-                            <svg class="w-6 h-6 text-twitch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0 2c-6.627 0-12-5.373-12-12S5.373 2 12 2s12 5.373 12 12-5.373 12-12 12zm6.364-11a1 1 0 1 0-1.447.894l.353.353-1.414 1.414-.353-.353a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2a1 1 0 0 0 0-1.414z"/>
-                            </svg>
+                            <FontAwesomeIcon :icon="faTwitch" class="w-6 h-6 text-twitch" />
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
                             Twitch Streamers
@@ -383,13 +422,10 @@ onMounted(() => {
                             Watch and interact with our community of streamers who showcase Pro Clubs gameplay and strategies.
                         </p>
                         <Link
-                            :href="route('twitch')"
                             class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-twitch rounded-full hover:bg-twitch/90 transition duration-300 dark:hover:bg-twitch/80"
                         >
                             <div class="inline-flex items-center gap-2">
-                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0 2c-6.627 0-12-5.373-12-12S5.373 2 12 2s12 5.373 12 12-5.373 12-12 12zm6.364-11a1 1 0 1 0-1.447.894l.353.353-1.414 1.414-.353-.353a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2a1 1 0 0 0 0-1.414z"/>
-                                </svg>
+                                <FontAwesomeIcon :icon="faTwitch" class="w-4 h-4" />
                                 Watch Twitch
                             </div>
                         </Link>
