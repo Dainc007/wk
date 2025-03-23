@@ -1,13 +1,14 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import animate from 'tailwindcss-animate';
+import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
-        './resources/js/**/*.vue',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
     ],
 
     theme: {
@@ -21,10 +22,13 @@ export default {
                 xbox: '#107C10',
                 playstation: '#000000',
                 windows: '#0078D7',
+                primary: '#007AFF',
+                secondary: '#FF375F',
+                accent: '#FFD700',
             },
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, animate, typography],
     darkMode: 'class'
 };
