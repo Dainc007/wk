@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
-use App\Http\Middleware\UpgradeToHttpsUnderNgrok;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -28,7 +27,6 @@ final class AdminPanelProvider extends PanelProvider
         return $panel
             ->topNavigation()
             ->spa()
-            ->default()
             ->id('admin')
             ->path('admin')
             ->login()
@@ -53,7 +51,6 @@ final class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                UpgradeToHttpsUnderNgrok::class,
             ])
             ->plugins([
                 FilamentShieldPlugin::make(),

@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
-use App\Filament\Auth\Resources\UserResource;
+use App\Filament\Auth\Pages\Dashboard;
+use App\Filament\Auth\Pages\EditProfile;
+use App\Filament\Auth\Pages\Register;
+use App\Filament\AvatarProviders\BoringAvatarsProvider;
 use Exception;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -20,7 +23,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-final class UserPanelProvider extends PanelProvider
+final class AuthPanelProvider extends PanelProvider
 {
     /**
      * @throws Exception
@@ -34,8 +37,9 @@ final class UserPanelProvider extends PanelProvider
             ->id('auth')
             ->path('auth')
             ->login()
-            ->registration()
-            ->profile()
+            ->registration(Register::class)
+            ->defaultAvatarProvider(BoringAvatarsProvider::class)
+            ->profile(EditProfile::class)
             ->passwordReset()
             ->colors([
                 'primary' => Color::Fuchsia,
@@ -45,6 +49,7 @@ final class UserPanelProvider extends PanelProvider
             ])
             ->discoverPages(in: app_path('Filament/Auth/Pages'), for: 'App\\Filament\\Auth\\Pages')
             ->pages([
+                Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Auth/Widgets'), for: 'App\\Filament\\Auth\\Widgets')
             ->widgets([])
@@ -59,8 +64,7 @@ final class UserPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->plugins([
-            ])
+            ->plugins([])
             ->authMiddleware([
                 Authenticate::class,
             ]);
