@@ -7,7 +7,7 @@ namespace Database\Seeders;
 use App\Models\Permission;
 use Illuminate\Database\Seeder;
 
-class PermissionSeeder extends Seeder
+final class PermissionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -52,7 +52,8 @@ class PermissionSeeder extends Seeder
 
         // User Management Permissions
         $userPermissions = [
-            'user_view',
+            'view_any_user',
+            'view_user',
             'user_create',
             'user_edit',
             'user_delete',
