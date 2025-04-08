@@ -6,16 +6,24 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Exception;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
-final class User extends Authenticatable
+final class User extends Authenticatable implements FilamentUser, HasMedia
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory,
         HasRoles,
+        InteractsWithMedia,
         Notifiable;
 
     /**
@@ -42,7 +50,38 @@ final class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return true;
+        return $this->hasRole(['super-admin', 'admin']);
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->hasRole('super-admin');
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return match ($panel->getId()) {
+            'admin' => $this->isAdmin(),
+            'auth' => auth()->check(),
+        };
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('preview')
+            ->fit(Fit::Contain, 300, 300)
+            ->nonQueued();
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        $media = $this->getFirstMedia('avatars');
+
+        return $media?->getUrl('preview');
     }
 
     /**
