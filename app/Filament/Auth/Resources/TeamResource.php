@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Admin\Resources;
+namespace App\Filament\Auth\Resources;
 
+use App\Filament\Auth\Resources\TeamResource\Pages;
 use App\Models\Team;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 final class TeamResource extends Resource
@@ -17,21 +18,21 @@ final class TeamResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required(),
+                //
             ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
+        return $table->relationship(fn () => auth()->user()->teams())
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
-                Tables\Columns\TextColumn::make('name'),
+                TextColumn::make('name')->searchable(),
             ])
             ->filters([
                 //
@@ -40,9 +41,7 @@ final class TeamResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+
             ]);
     }
 
@@ -56,9 +55,25 @@ final class TeamResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => TeamResource\Pages\ListTeams::route('/'),
-            'create' => TeamResource\Pages\CreateTeam::route('/create'),
-            'edit' => TeamResource\Pages\EditTeam::route('/{record}/edit'),
+            'index' => Pages\ListTeams::route('/'),
+            'create' => Pages\CreateTeam::route('/create'),
+            'edit' => Pages\EditTeam::route('/{record}/edit'),
         ];
+    }
+
+    // temporary
+    public static function canAccess(): bool
+    {
+        return true;
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Teams');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('My Teams');
     }
 }

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Admin\Resources\PermissionResource\Pages;
+namespace App\Filament\Auth\Resources\UserResource\Pages;
 
-use App\Filament\Admin\Resources\PermissionResource;
+use App\Filament\Auth\Resources\UserResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-final class EditPermission extends EditRecord
+final class EditUser extends EditRecord
 {
-    protected static string $resource = PermissionResource::class;
+    protected static string $resource = UserResource::class;
 
     protected function getHeaderActions(): array
     {

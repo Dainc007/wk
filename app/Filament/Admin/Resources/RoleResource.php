@@ -1,17 +1,19 @@
 <?php
+
+declare(strict_types=1);
 //
-//namespace App\Filament\Admin\Resources;
+// namespace App\Filament\Admin\Resources;
 //
-//use App\Filament\Resources\RoleResource\Pages;
-//use App\Models\Role;
-//use Filament\Forms;
-//use Filament\Forms\Form;
-//use Filament\Resources\Resource;
-//use Filament\Tables;
-//use Filament\Tables\Table;
+// use App\Filament\Resources\RoleResource\Pages;
+// use App\Models\Role;
+// use Filament\Forms;
+// use Filament\Forms\Form;
+// use Filament\Resources\Resource;
+// use Filament\Tables;
+// use Filament\Tables\Table;
 //
-//class RoleResource extends Resource
-//{
+// class RoleResource extends Resource
+// {
 //    protected static ?string $model = Role::class;
 //
 //    protected static ?string $navigationIcon = 'heroicon-o-key';
@@ -73,4 +75,4 @@
 //            'edit' => \App\Filament\Admin\Resources\RoleResource\Pages\EditRole::route('/{record}/edit'),
 //        ];
 //    }
-//}
+// }

@@ -5,5 +5,5 @@ declare(strict_types=1);
 return [
     App\Providers\AppServiceProvider::class,
     App\Providers\Filament\AdminPanelProvider::class,
-    App\Providers\Filament\UserPanelProvider::class,
+    App\Providers\Filament\AuthPanelProvider::class,
 ];

@@ -1,17 +1,19 @@
 <?php
+
+declare(strict_types=1);
 //
-//namespace App\Filament\Admin\Resources;
+// namespace App\Filament\Admin\Resources;
 //
-//use App\Filament\Resources\PermissionResource\Pages;
-//use App\Models\Permission;
-//use Filament\Forms;
-//use Filament\Forms\Form;
-//use Filament\Resources\Resource;
-//use Filament\Tables;
-//use Filament\Tables\Table;
+// use App\Filament\Resources\PermissionResource\Pages;
+// use App\Models\Permission;
+// use Filament\Forms;
+// use Filament\Forms\Form;
+// use Filament\Resources\Resource;
+// use Filament\Tables;
+// use Filament\Tables\Table;
 //
-//class PermissionResource extends Resource
-//{
+// class PermissionResource extends Resource
+// {
 //    protected static ?string $model = Permission::class;
 //
 //    protected static ?string $navigationIcon = 'heroicon-o-key';
@@ -64,4 +66,4 @@
 //            'edit' => \App\Filament\Admin\Resources\PermissionResource\Pages\EditPermission::route('/{record}/edit'),
 //        ];
 //    }
-//}
+// }

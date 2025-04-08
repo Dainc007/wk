@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Admin\Resources\PermissionResource\Pages;
+namespace App\Filament\Auth\Resources\TeamResource\Pages;
 
-use App\Filament\Admin\Resources\PermissionResource;
+use App\Filament\Auth\Resources\TeamResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-final class ListPermissions extends ListRecords
+final class ListTeams extends ListRecords
 {
-    protected static string $resource = PermissionResource::class;
+    protected static string $resource = TeamResource::class;
 
     protected function getHeaderActions(): array
     {

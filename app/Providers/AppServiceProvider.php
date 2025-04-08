@@ -7,9 +7,15 @@ namespace App\Providers;
 use App\Models\User;
 use App\Services\LogService;
 use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
+use BezhanSalleh\FilamentShield\FilamentShield;
+use Filament\Actions\Action;
+use Filament\Forms\Components\Component;
+use Filament\Forms\Components\Field;
+use Filament\Infolists\Components\Entry;
+use Filament\Tables\Columns\Column;
+use Filament\Tables\Filters\Filter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use BezhanSalleh\FilamentShield\FilamentShield;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
@@ -46,9 +52,53 @@ final class AppServiceProvider extends ServiceProvider
         $this->setFilamentConfiguration();
     }
 
-    private function handleGates() : void
+    private function setDefaultFilamentSettings(): void
     {
-        Gate::define('viewPulse', function (User $user) {
+        Column::configureUsing(function (Column $column): void {
+            $column
+                ->alignCenter()
+                ->sortable()
+                ->translateLabel();
+        });
+        Filter::configureUsing(function (Filter $filter): void {
+            $filter->translateLabel();
+        });
+        Field::configureUsing(function (Field $field): void {
+            $field->translateLabel();
+        });
+        Entry::configureUsing(function (Entry $entry): void {
+            $entry->translateLabel();
+        });
+
+        Action::configureUsing(function (Action $action): void {
+            $action->translateLabel();
+        });
+
+        Component::configureUsing(function (Component $component): void {
+            $component->translateLabel();
+        });
+    }
+
+    private function setFilamentConfiguration(): void
+    {
+        FilamentShield::prohibitDestructiveCommands($this->app->isProduction());
+
+        LanguageSwitch::configureUsing(function (LanguageSwitch $switch): void {
+            $switch
+                ->circular()
+                ->locales(['pl', 'en']);
+        });
+
+        $this->setDefaultFilamentSettings();
+    }
+
+    private function handleGates(): void
+    {
+        Gate::before(function (User $user): bool {
+            return $user->isSuperAdmin();
+        });
+
+        Gate::define('viewPulse', function (User $user): bool {
             return $user->isAdmin();
         });
 
@@ -57,24 +107,5 @@ final class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('viewPulse', fn (User $user): bool => $user->isAdmin());
-
-        // todo to do usunięcia
-        Gate::before(function ($user, $ability) {
-            $isSuperAdmin = $user->hasRole('super-admin');
-            $isFirstUser = $user->id === 1;
-
-            return $isSuperAdmin || $isFirstUser ? true : null;
-        });
-    }
-
-    protected function setFilamentConfiguration(): void
-    {
-        FilamentShield::prohibitDestructiveCommands($this->app->isProduction());
-
-        LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
-            $switch
-                ->circular()
-                ->locales(['pl','en']);
-        });
     }
 }

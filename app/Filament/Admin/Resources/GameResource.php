@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Resources\GameResource\Pages;
 use App\Models\Game;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -83,9 +82,9 @@ final class GameResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Admin\Resources\GameResource\Pages\ListGames::route('/'),
-            'create' => \App\Filament\Admin\Resources\GameResource\Pages\CreateGame::route('/create'),
-            'edit' => \App\Filament\Admin\Resources\GameResource\Pages\EditGame::route('/{record}/edit'),
+            'index' => GameResource\Pages\ListGames::route('/'),
+            'create' => GameResource\Pages\CreateGame::route('/create'),
+            'edit' => GameResource\Pages\EditGame::route('/{record}/edit'),
         ];
     }
 }
