@@ -6,6 +6,7 @@ namespace App\Providers;
 
 use App\Models\User;
 use App\Services\LogService;
+use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use BezhanSalleh\FilamentShield\FilamentShield;
@@ -39,12 +40,10 @@ final class AppServiceProvider extends ServiceProvider
 
         LogService::shouldLogMissingTranslationKeys(config('logging.logMissingTranslationKeys'));
 
-        FilamentShield::prohibitDestructiveCommands($isProduction);
-
         Vite::prefetch(concurrency: 3)->useAggressivePrefetching();
 
         $this->handleGates();
-
+        $this->setFilamentConfiguration();
     }
 
     private function handleGates() : void
@@ -65,6 +64,17 @@ final class AppServiceProvider extends ServiceProvider
             $isFirstUser = $user->id === 1;
 
             return $isSuperAdmin || $isFirstUser ? true : null;
+        });
+    }
+
+    protected function setFilamentConfiguration(): void
+    {
+        FilamentShield::prohibitDestructiveCommands($this->app->isProduction());
+
+        LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
+            $switch
+                ->circular()
+                ->locales(['pl','en']);
         });
     }
 }
