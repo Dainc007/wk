@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\DefaultSettings;
 use Database\Factories\UserFactory;
 use Exception;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Image\Enums\Fit;
@@ -80,8 +82,7 @@ final class User extends Authenticatable implements FilamentUser, HasMedia
     public function getFilamentAvatarUrl(): ?string
     {
         $media = $this->getFirstMedia('avatars');
-
-        return $media?->getUrl('preview');
+        return $media?->getUrl('preview') ?? DefaultSettings::AvatarUrl->getUrl();
     }
 
     /**
@@ -95,5 +96,10 @@ final class User extends Authenticatable implements FilamentUser, HasMedia
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function teams(): HasMany
+    {
+        return $this->hasMany(Team::class);
     }
 }
