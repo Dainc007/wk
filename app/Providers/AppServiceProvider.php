@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\User;
+use App\Observers\UserObserver;
 use App\Services\LogService;
 use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 use BezhanSalleh\FilamentShield\FilamentShield;
@@ -39,6 +40,9 @@ final class AppServiceProvider extends ServiceProvider
         $isProduction = $this->app->isProduction();
 
         Model::shouldBeStrict($isProduction);
+        Model::unguard();
+        Model::automaticallyEagerLoadRelationships();
+
         DB::prohibitDestructiveCommands($isProduction);
         URL::forceScheme('https');
 
@@ -86,6 +90,10 @@ final class AppServiceProvider extends ServiceProvider
         LanguageSwitch::configureUsing(function (LanguageSwitch $switch): void {
             $switch
                 ->circular()
+                ->flags([
+                    'pl' => asset('flags/1x1/pl.svg'),
+                    'en' => asset('flags/1x1/gb.svg'),
+                ])
                 ->locales(['pl', 'en']);
         });
 
