@@ -82,7 +82,13 @@ final class User extends Authenticatable implements FilamentUser, HasMedia
     public function getFilamentAvatarUrl(): ?string
     {
         $media = $this->getFirstMedia('avatars');
+
         return $media?->getUrl('preview') ?? DefaultSettings::AvatarUrl->getUrl();
+    }
+
+    public function teams(): HasMany
+    {
+        return $this->hasMany(Team::class);
     }
 
     /**
@@ -98,8 +104,13 @@ final class User extends Authenticatable implements FilamentUser, HasMedia
         ];
     }
 
-    public function teams(): HasMany
+    public function canBeImpersonated(): bool
     {
-        return $this->hasMany(Team::class);
+        return !$this->isAdmin();
     }
+    public function canImpersonate(): true
+    {
+        return $this->isSuperAdmin();
+    }
+
 }

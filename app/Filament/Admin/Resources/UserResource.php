@@ -6,10 +6,12 @@ namespace App\Filament\Admin\Resources;
 
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 
 final class UserResource extends Resource
 {
@@ -27,10 +29,12 @@ final class UserResource extends Resource
                     ->email()
                     ->required(),
                 Forms\Components\TextInput::make('password')
+                    ->visibleOn('create')
                     ->password()
                     ->required()
                     ->minLength(8)
                     ->dehydrated(fn ($state): bool => ! blank($state)),
+                Select::make('roles')->multiple()->relationship('roles', 'name'),
             ]);
     }
 
@@ -50,6 +54,7 @@ final class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Impersonate::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
