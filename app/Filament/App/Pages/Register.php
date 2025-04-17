@@ -22,8 +22,7 @@ final class Register extends FilamentRegister
                 UserResource::getPlatformComponent(),
                 UserResource::getPlatformUsername(),
                 UserResource::getRecommendedByComponent(),
-                UserResource::getDiscordComponent(),
-                UserResource::getTwitchComponent(),
             ]);
     }
+
 }

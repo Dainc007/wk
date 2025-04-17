@@ -20,6 +20,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "opcodesio/log-viewer": "^3.14",
+        "saade/filament-fullcalendar": "^3.0",
         "stechstudio/filament-impersonate": "^3.16",
         "tightenco/ziggy": "^2.0"
     },

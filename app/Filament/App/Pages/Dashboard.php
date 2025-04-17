@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\App\Pages;
 
+use App\Filament\App\Widgets\CalendarWidget;
 use App\Filament\App\Widgets\LatestStreamers;
 use App\Filament\App\Widgets\StatsOverview;
 use App\Filament\App\Widgets\UserPlayedGamesWidget;
@@ -21,6 +22,7 @@ final class Dashboard extends Page
             StatsOverview::class,
             UserPlayedGamesWidget::class,
             LatestStreamers::class,
+            CalendarWidget::class,
         ];
     }
 

@@ -23,6 +23,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Saade\FilamentFullCalendar\FilamentFullCalendarPlugin;
 
 final class AppPanelProvider extends PanelProvider
 {
@@ -71,6 +72,14 @@ final class AppPanelProvider extends PanelProvider
             ])
             ->plugins([
                 GlobalSearchModalPlugin::make(),
+                FilamentFullCalendarPlugin::make()
+//                    ->schedulerLicenseKey()
+//                    ->selectable()
+//                    ->editable()
+//                    ->timezone()
+//                    ->locale()
+//                    ->plugins()
+//                    ->config()
             ])
             ->authMiddleware([
                 Authenticate::class,
