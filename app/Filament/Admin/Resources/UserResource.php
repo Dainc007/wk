@@ -6,8 +6,9 @@ namespace App\Filament\Admin\Resources;
 
 use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -34,12 +35,23 @@ final class UserResource extends Resource
                     ->required()
                     ->minLength(8)
                     ->dehydrated(fn ($state): bool => ! blank($state)),
-                Select::make('roles')->multiple()->relationship('roles', 'name'),
+                CheckboxList::make('roles')
+                    ->relationship('roles', 'name')
+                    ->columns(3),
             ]);
     }
 
     public static function table(Table $table): Table
     {
+
+        foreach (User::all() as $user) {
+            Notification::make()
+                ->title('Message!')
+                ->broadcast($user);
+
+            $user->notify(Notification::make()->title('elo')->toBroadcast());
+        }
+
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
