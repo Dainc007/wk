@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Auth\Widgets;
 
 use Filament\Widgets\ChartWidget;
 
-class UserPlayedGamesWidget extends ChartWidget
+final class UserPlayedGamesWidget extends ChartWidget
 {
     protected static ?string $heading = 'Games Played';
 
@@ -39,6 +41,4 @@ class UserPlayedGamesWidget extends ChartWidget
     {
         return 'pie';
     }
-
-
 }

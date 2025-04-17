@@ -11,12 +11,13 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 final class TeamResource extends Resource
 {
     protected static ?string $model = Team::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -30,15 +31,23 @@ final class TeamResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->relationship(fn () => auth()->user()->teams())
+        return $table->modifyQueryUsing(function (Builder $query): void {
+            $query->whereHas('users', function (Builder $query): void {
+                $query->where('users.id', auth()->id());
+            });
+        })
             ->columns([
-                TextColumn::make('name')->searchable(),
+                TextColumn::make('name'),
             ])
             ->filters([
-                //
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+
+            ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
             ])
             ->bulkActions([
 
@@ -69,7 +78,7 @@ final class TeamResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('Teams');
+        return __('My Teams');
     }
 
     public static function getLabel(): ?string

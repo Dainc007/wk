@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
+use App\Enums\DefaultSettings;
 use App\Filament\Auth\Pages\Dashboard;
 use App\Filament\Auth\Pages\EditProfile;
 use App\Filament\Auth\Pages\Register;
@@ -31,12 +33,14 @@ final class AuthPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->topNavigation(false)
+            ->topNavigation(true)
             ->spa()
             ->default()
             ->id('auth')
-            ->path('auth')
+            ->path('')
             ->login()
+//            ->brandName('Menago League')
+//            ->brandLogo(DefaultSettings::AvatarUrl->getUrl())
             ->registration(Register::class)
             ->defaultAvatarProvider(BoringAvatarsProvider::class)
             ->profile(EditProfile::class)
@@ -64,7 +68,8 @@ final class AuthPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->plugins([])
+            ->plugins([
+            ])
             ->authMiddleware([
                 Authenticate::class,
             ]);
