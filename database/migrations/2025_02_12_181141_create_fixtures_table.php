@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('fixtures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('host_id')->constrained('teams')->onDelete('cascade');
-            $table->foreignId('visitor_id')->constrained('teams')->onDelete('cascade');
+            $table->foreignId('host_id')->constrained('teams');
+            $table->foreignId('visitor_id')->constrained('teams');
             $table->date('date')->nullable();
             $table->timestamps();
         });

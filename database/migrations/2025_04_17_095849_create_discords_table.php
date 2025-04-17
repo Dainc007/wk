@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('discords', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('host_id')->constrained('teams');
-            $table->foreignId('visitor_id')->constrained('teams');
-            $table->integer('host_score')->nullable();
-            $table->integer('visitor_score')->nullable();
+            $table->string('name')->nullable();
+            $table->morphs('discordable');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('discords');
     }
 };

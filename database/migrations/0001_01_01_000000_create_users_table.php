@@ -24,6 +24,7 @@ return new class extends Migration
 
             $table->timestamp('last_seen_at')->nullable();
             $table->string('platform')->nullable();
+            $table->string('platform_username')->nullable();
             $table->foreignId('recommended_by')->nullable()->constrained('users');
         });
 

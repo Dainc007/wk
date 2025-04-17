@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Enums;
@@ -11,7 +12,7 @@ enum DefaultSettings: string
 
     public function getUrl(): string
     {
-        return match($this) {
+        return match ($this) {
             self::AvatarUrl => Storage::disk('public')->url($this->value),
         };
     }

@@ -2,13 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Auth\Widgets;
+namespace App\Filament\App\Widgets;
 
 use Filament\Widgets\ChartWidget;
 
 final class UserPlayedGamesWidget extends ChartWidget
 {
     protected static ?string $heading = 'Games Played';
+
+    protected static ?string $pollingInterval = null;
+
+    protected static ?string $maxHeight = '300px';
 
     protected function getData(): array
     {

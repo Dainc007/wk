@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Auth\Widgets;
+namespace App\Filament\App\Widgets;
 
 use App\Models\Team;
 use App\Services\UserService;

@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('twitches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('host_id')->constrained('teams');
-            $table->foreignId('visitor_id')->constrained('teams');
-            $table->integer('host_score')->nullable();
-            $table->integer('visitor_score')->nullable();
+            $table->string('name')->unique();
+            $table->boolean('is_live')->default(false);
+            $table->morphs('twitchable');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('twitches');
     }
 };

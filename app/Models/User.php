@@ -12,6 +12,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Image\Enums\Fit;
@@ -67,7 +68,7 @@ final class User extends Authenticatable implements FilamentUser, HasMedia
     {
         return match ($panel->getId()) {
             'admin' => $this->isAdmin(),
-            'auth' => auth()->check(),
+            'app' => auth()->check(),
         };
     }
 
@@ -91,6 +92,26 @@ final class User extends Authenticatable implements FilamentUser, HasMedia
         return $this->hasMany(Team::class);
     }
 
+    public function twitch(): MorphOne
+    {
+        return $this->morphOne(Twitch::class, 'twitchable');
+    }
+
+    public function discord(): MorphOne
+    {
+        return $this->morphOne(Discord::class, 'discordable');
+    }
+
+    public function canBeImpersonated(): bool
+    {
+        return ! $this->isAdmin();
+    }
+
+    public function canImpersonate(): true
+    {
+        return $this->isSuperAdmin();
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -103,14 +124,4 @@ final class User extends Authenticatable implements FilamentUser, HasMedia
             'password' => 'hashed',
         ];
     }
-
-    public function canBeImpersonated(): bool
-    {
-        return !$this->isAdmin();
-    }
-    public function canImpersonate(): true
-    {
-        return $this->isSuperAdmin();
-    }
-
 }

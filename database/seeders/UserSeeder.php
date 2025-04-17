@@ -21,6 +21,33 @@ final class UserSeeder extends Seeder
                 'email' => 'test@example.com',
             ]);
 
+            $user->twitch()->create([
+                'name' => 'izakooo',
+            ]);
+
+            $user->discord()->create([
+                'name' => 'izakooo',
+            ]);
+
+            $roles = Role::all();
+            $roleNames = $roles->pluck('name')->toArray();
+            $user->assignRole($roleNames);
+        }
+
+        if (! User::where('email', 'danielheinze96@gmail.com')->exists()) {
+            $user = User::factory()->create([
+                'name' => 'Daniel Heinze',
+                'email' => 'danielheinze96@gmail.com',
+            ]);
+
+            $user->twitch()->create([
+                'name' => 'heinzei14i',
+            ]);
+
+            $user->discord()->create([
+                'name' => 'heinzei14i',
+            ]);
+
             $roles = Role::all();
             $roleNames = $roles->pluck('name')->toArray();
             $user->assignRole($roleNames);
