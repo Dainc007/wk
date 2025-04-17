@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Auth\Resources;
+namespace App\Filament\App\Resources;
 
-use App\Filament\Auth\Resources\UserResource\Pages;
+use App\Enums\SocialPlatform;
+use App\Filament\App\Resources\UserResource\Pages;
 use App\Models\User;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
@@ -131,20 +133,30 @@ final class UserResource extends Resource
             ->hidden(fn (callable $get): bool => empty($get('platform')));
     }
 
-    public static function getDiscordComponent(): TextInput
+    public static function getDiscordComponent(): Grid
     {
-        return TextInput::make('discord')
-            ->label('Discord Username')
-            ->prefix('ⓓ')
-            ->maxLength(255);
+        return Grid::make('discord')
+            ->relationship('discord')
+            ->schema([
+                TextInput::make('name')
+                    ->label('Discord Username')
+                    ->suffix('ⓓ')
+                    ->maxLength(255),
+            ]);
     }
 
-    public static function getTwitchComponent(): TextInput
+    public static function getTwitchComponent(): Grid
     {
-        return TextInput::make('twitch')
-            ->label('Twitch Username')
-            ->prefix('ⓣ') // Twitch icon representation
-            ->maxLength(255);
+
+        return Grid::make('twitch')
+            ->relationship('twitch')
+            ->schema([
+                TextInput::make('name')
+                    ->prefix(SocialPlatform::TWITCH->getBaseUrl())
+                    ->label('Twitch Username')
+                    ->suffix('ⓣ')
+                    ->maxLength(255),
+            ]);
     }
 
     public static function getRecommendedByComponent(): Select

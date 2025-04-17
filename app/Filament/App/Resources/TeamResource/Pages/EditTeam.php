@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Auth\Resources\TeamResource\Pages;
+namespace App\Filament\App\Resources\TeamResource\Pages;
 
-use App\Filament\Auth\Resources\TeamResource;
+use App\Filament\App\Resources\TeamResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

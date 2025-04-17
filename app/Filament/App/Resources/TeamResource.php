@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Auth\Resources;
+namespace App\Filament\App\Resources;
 
-use App\Filament\Auth\Resources\TeamResource\Pages;
+use App\Filament\App\Resources\TeamResource\Pages;
 use App\Models\Team;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +27,27 @@ final class TeamResource extends Resource
     {
         return $form
             ->schema([
-                //
+                SpatieMediaLibraryFileUpload::make('teamLogo')
+                    ->columnSpanFull()
+                    ->avatar()
+                    ->responsiveImages()
+                    ->collection('teamLogos')
+                    ->hiddenLabel()
+                    ->alignCenter()
+                    ->image()
+                    ->imageEditor()
+                    ->circleCropper()
+                    ->directory('teamLogos')
+                    ->disk('public'),
+                TextInput::make('name')
+                    ->required()->unique(ignoreRecord: true),
+                //                TextInput::make('discord.name')
+                //                    ->placeholder('Discord')
+                //                    ->unique(ignoreRecord: true),
+                //                TextInput::make('twitch.name')
+                //                    ->placeholder('Twitch')
+                //                    ->unique(ignoreRecord: true),
+
             ]);
     }
 
@@ -47,7 +69,6 @@ final class TeamResource extends Resource
 
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
             ])
             ->bulkActions([
 
@@ -57,7 +78,6 @@ final class TeamResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 

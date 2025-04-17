@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
-use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
-use App\Enums\DefaultSettings;
-use App\Filament\Auth\Pages\Dashboard;
-use App\Filament\Auth\Pages\EditProfile;
-use App\Filament\Auth\Pages\Register;
+use App\Filament\App\Pages\EditProfile;
+use App\Filament\App\Pages\Register;
 use App\Filament\AvatarProviders\BoringAvatarsProvider;
+use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
 use Exception;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -18,6 +16,7 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\MaxWidth;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -25,7 +24,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-final class AuthPanelProvider extends PanelProvider
+final class AppPanelProvider extends PanelProvider
 {
     /**
      * @throws Exception
@@ -36,8 +35,8 @@ final class AuthPanelProvider extends PanelProvider
             ->topNavigation(true)
             ->spa()
             ->default()
-            ->id('auth')
-            ->path('')
+            ->id('app')
+            ->path('app')
             ->login()
 //            ->brandName('Menago League')
 //            ->brandLogo(DefaultSettings::AvatarUrl->getUrl())
@@ -45,17 +44,19 @@ final class AuthPanelProvider extends PanelProvider
             ->defaultAvatarProvider(BoringAvatarsProvider::class)
             ->profile(EditProfile::class)
             ->passwordReset()
+            ->databaseTransactions()
+            ->maxContentWidth(MaxWidth::Full)
             ->colors([
                 'primary' => Color::Fuchsia,
             ])
-            ->discoverResources(in: app_path('Filament/Auth/Resources'), for: 'App\\Filament\\Auth\\Resources')
+            ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
             ->resources([
             ])
-            ->discoverPages(in: app_path('Filament/Auth/Pages'), for: 'App\\Filament\\Auth\\Pages')
+            ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')
             ->pages([
-                Dashboard::class,
+                //                Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Auth/Widgets'), for: 'App\\Filament\\Auth\\Widgets')
+            ->discoverWidgets(in: app_path('Filament/App/Widgets'), for: 'App\\Filament\\App\\Widgets')
             ->widgets([])
             ->middleware([
                 EncryptCookies::class,
@@ -69,6 +70,7 @@ final class AuthPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->plugins([
+                GlobalSearchModalPlugin::make(),
             ])
             ->authMiddleware([
                 Authenticate::class,

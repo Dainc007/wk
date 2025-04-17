@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Auth\Resources\UserResource\Pages;
+namespace App\Filament\App\Resources\UserResource\Pages;
 
-use App\Filament\Auth\Resources\UserResource;
+use App\Filament\App\Resources\UserResource;
 use Filament\Resources\Pages\CreateRecord;
 
 final class CreateUser extends CreateRecord

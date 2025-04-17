@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Auth\Pages;
+namespace App\Filament\App\Pages;
 
-use App\Filament\Auth\Widgets\StatsOverview;
-use App\Filament\Auth\Widgets\UserPlayedGamesWidget;
+use App\Filament\App\Widgets\LatestStreamers;
+use App\Filament\App\Widgets\StatsOverview;
+use App\Filament\App\Widgets\UserPlayedGamesWidget;
 use Filament\Pages\Page;
 
 final class Dashboard extends Page
@@ -19,6 +20,7 @@ final class Dashboard extends Page
         return [
             StatsOverview::class,
             UserPlayedGamesWidget::class,
+            LatestStreamers::class,
         ];
     }
 

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\User;
-use App\Observers\UserObserver;
 use App\Services\LogService;
 use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 use BezhanSalleh\FilamentShield\FilamentShield;
+use Carbon\CarbonImmutable;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Field;
@@ -16,6 +16,7 @@ use Filament\Infolists\Components\Entry;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
@@ -46,7 +47,7 @@ final class AppServiceProvider extends ServiceProvider
         DB::prohibitDestructiveCommands($isProduction);
         URL::forceScheme('https');
 
-        date_default_timezone_set(config('app.timezone'));
+        $this->configureDates();
 
         LogService::shouldLogMissingTranslationKeys(config('logging.logMissingTranslationKeys'));
 
@@ -54,6 +55,12 @@ final class AppServiceProvider extends ServiceProvider
 
         $this->handleGates();
         $this->setFilamentConfiguration();
+    }
+
+    public function configureDates(): void
+    {
+        date_default_timezone_set(config('app.timezone'));
+        Date::use(CarbonImmutable::class);
     }
 
     private function setDefaultFilamentSettings(): void

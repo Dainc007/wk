@@ -2,15 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Auth\Pages;
+namespace App\Filament\App\Pages;
 
-use App\Filament\Auth\Resources\UserResource;
-use App\Models\User;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
+use App\Filament\App\Resources\UserResource;
 use Filament\Forms\Form;
+use Filament\Pages\Auth\Register as FilamentRegister;
 
-final class Register extends \Filament\Pages\Auth\Register
+final class Register extends FilamentRegister
 {
     public function form(Form $form): Form
     {
