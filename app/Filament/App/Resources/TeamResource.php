@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\TeamResource\Pages;
+use App\Filament\App\Resources\TeamResource\RelationManagers\UsersRelationManager;
 use App\Models\Team;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
@@ -59,13 +60,16 @@ final class TeamResource extends Resource
             });
         })
             ->columns([
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('teamLogo')->collection('teamLogos'),
                 TextColumn::make('name'),
             ])
             ->filters([
 
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // todo all teams or own team?
+                Tables\Actions\EditAction::make()->visible(auth()->user()->can('edit_team')),
+                Tables\Actions\DeleteAction::make()->visible(auth()->user()->can('delete_team')),
 
             ])
             ->headerActions([
@@ -78,6 +82,7 @@ final class TeamResource extends Resource
     public static function getRelations(): array
     {
         return [
+            UsersRelationManager::class
         ];
     }
 
@@ -87,6 +92,7 @@ final class TeamResource extends Resource
             'index' => Pages\ListTeams::route('/'),
             'create' => Pages\CreateTeam::route('/create'),
             'edit' => Pages\EditTeam::route('/{record}/edit'),
+            'view' => Pages\ViewTeam::route('/{record}'),
         ];
     }
 
@@ -104,5 +110,10 @@ final class TeamResource extends Resource
     public static function getLabel(): ?string
     {
         return __('My Teams');
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('create_team') && auth()->user()->teams()->count() < 2;
     }
 }

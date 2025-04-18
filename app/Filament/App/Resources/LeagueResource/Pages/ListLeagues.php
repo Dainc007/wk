@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\App\Resources\EventResource\Pages;
+namespace App\Filament\App\Resources\LeagueResource\Pages;
 
-use App\Filament\App\Resources\EventResource;
+use App\Filament\App\Resources\LeagueResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-final class ListEvents extends ListRecords
+final class ListLeagues extends ListRecords
 {
-    protected static string $resource = EventResource::class;
+    protected static string $resource = LeagueResource::class;
 
     protected function getHeaderActions(): array
     {

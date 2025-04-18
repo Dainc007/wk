@@ -11,7 +11,7 @@ use Exception;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -87,9 +87,9 @@ final class User extends Authenticatable implements FilamentUser, HasMedia
         return $media?->getUrl('preview') ?? DefaultSettings::AvatarUrl->getUrl();
     }
 
-    public function teams(): HasMany
+    public function teams(): BelongsToMany
     {
-        return $this->hasMany(Team::class);
+        return $this->belongsToMany(Team::class);
     }
 
     public function twitch(): MorphOne

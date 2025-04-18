@@ -7,6 +7,7 @@ namespace App\Models;
 use Database\Factories\LeagueFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 final class League extends Model
 {
@@ -18,4 +19,9 @@ final class League extends Model
         'level',
         'country',
     ];
+
+    public function teams(): BelongsToMany
+    {
+        return $this->belongsToMany(Team::class);
+    }
 }

@@ -72,14 +72,14 @@ final class AppPanelProvider extends PanelProvider
             ])
             ->plugins([
                 GlobalSearchModalPlugin::make(),
-                FilamentFullCalendarPlugin::make()
-//                    ->schedulerLicenseKey()
-//                    ->selectable()
-//                    ->editable()
-//                    ->timezone()
-//                    ->locale()
-//                    ->plugins()
-//                    ->config()
+                FilamentFullCalendarPlugin::make(),
+                //                    ->schedulerLicenseKey()
+                //                    ->selectable()
+                //                    ->editable()
+                //                    ->timezone()
+                //                    ->locale()
+                //                    ->plugins()
+                //                    ->config()
             ])
             ->authMiddleware([
                 Authenticate::class,

@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\App\Widgets;
 
 use App\Filament\App\Resources\EventResource;
+use App\Models\Event;
 use Saade\FilamentFullCalendar\Data\EventData;
 use Saade\FilamentFullCalendar\Widgets\FullCalendarWidget;
-use App\Models\Event;
 
-class CalendarWidget extends FullCalendarWidget
+final class CalendarWidget extends FullCalendarWidget
 {
-
     public string|null|\Illuminate\Database\Eloquent\Model $model = Event::class;
 
     public function config(): array
@@ -23,6 +24,7 @@ class CalendarWidget extends FullCalendarWidget
             ],
         ];
     }
+
     public function fetchEvents(array $fetchInfo): array
     {
         return Event::query()
@@ -30,7 +32,7 @@ class CalendarWidget extends FullCalendarWidget
             ->where('ends_at', '<=', $fetchInfo['end'])
             ->get()
             ->map(
-                fn (Event $event) => EventData::make()
+                fn (Event $event): EventData => EventData::make()
                     ->id($event->id)
                     ->title($event->name)
                     ->start($event->starts_at)
@@ -42,5 +44,4 @@ class CalendarWidget extends FullCalendarWidget
             )
             ->toArray();
     }
-
 }

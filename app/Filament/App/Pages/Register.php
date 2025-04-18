@@ -24,5 +24,4 @@ final class Register extends FilamentRegister
                 UserResource::getRecommendedByComponent(),
             ]);
     }
-
 }

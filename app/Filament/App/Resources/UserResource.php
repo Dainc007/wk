@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\App\Resources;
 
+use App\Enums\DefaultSettings;
 use App\Enums\SocialPlatform;
 use App\Filament\App\Resources\UserResource\Pages;
 use App\Models\User;
@@ -68,6 +69,7 @@ final class UserResource extends Resource
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
+            'view' => Pages\ViewUser::route('/{record}'),
         ];
     }
 
@@ -140,21 +142,20 @@ final class UserResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->label('Discord Username')
-                    ->suffix('ⓓ')
+                    ->suffix(fn (): \Illuminate\Support\HtmlString => new \Illuminate\Support\HtmlString(DefaultSettings::DiscordIcon->value))
                     ->maxLength(255),
             ]);
     }
 
     public static function getTwitchComponent(): Grid
     {
-
         return Grid::make('twitch')
             ->relationship('twitch')
             ->schema([
                 TextInput::make('name')
                     ->prefix(SocialPlatform::TWITCH->getBaseUrl())
                     ->label('Twitch Username')
-                    ->suffix('ⓣ')
+                    ->suffix(fn (): \Illuminate\Support\HtmlString => new \Illuminate\Support\HtmlString(DefaultSettings::TwitchIcon->value))
                     ->maxLength(255),
             ]);
     }

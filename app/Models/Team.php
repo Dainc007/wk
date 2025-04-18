@@ -54,6 +54,11 @@ final class Team extends Model implements HasMedia
         return $this->belongsToMany(User::class);
     }
 
+    public function leagues(): BelongsToMany
+    {
+        return $this->belongsToMany(League::class);
+    }
+
     public function twitch(): MorphOne
     {
         return $this->morphOne(Twitch::class, 'twitchable');

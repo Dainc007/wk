@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('team_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->string('pitch_role')->nullable();
             $table->dateTime('contract_signed_at')->nullable();
             $table->dateTime('contract_terminated_at')->nullable();
