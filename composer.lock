@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb1d203bebbf5511bc8062f2e9de0382",
+    "content-hash": "960be833d051ef761606f44b934c7f1d",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",
@@ -2606,16 +2606,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v12.9.1",
+            "version": "v12.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "7c201749cc4b463eea1b58698f5fb4f4c09dc32b"
+                "reference": "3db59aa0f382c349c78a92f3e5b5522e00e3301b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/7c201749cc4b463eea1b58698f5fb4f4c09dc32b",
-                "reference": "7c201749cc4b463eea1b58698f5fb4f4c09dc32b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/3db59aa0f382c349c78a92f3e5b5522e00e3301b",
+                "reference": "3db59aa0f382c349c78a92f3e5b5522e00e3301b",
                 "shasum": ""
             },
             "require": {
@@ -2817,7 +2817,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-04-16T12:02:03+00:00"
+            "time": "2025-04-16T15:44:19+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -4433,6 +4433,85 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.4.0"
             },
             "time": "2024-12-30T11:07:19+00:00"
+        },
+        {
+            "name": "nunomaduro/essentials",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nunomaduro/essentials.git",
+                "reference": "6bbaffe4efc9867b7c12ce074ceca1f0bdc66947"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nunomaduro/essentials/zipball/6bbaffe4efc9867b7c12ce074ceca1f0bdc66947",
+                "reference": "6bbaffe4efc9867b7c12ce074ceca1f0bdc66947",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^11.44.2|^12.9.2",
+                "php": "^8.3.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.22.0",
+                "orchestra/testbench": "^10.2.1",
+                "pestphp/pest": "^3.8.1",
+                "pestphp/pest-plugin-type-coverage": "^3.5",
+                "phpstan/phpstan": "^2.1.12",
+                "rector/rector": "^2.0.11",
+                "symfony/var-dumper": "^7.2.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NunoMaduro\\Essentials\\EssentialsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NunoMaduro\\Essentials\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                }
+            ],
+            "description": "Just better defaults for your Laravel projects.",
+            "keywords": [
+                "essentials",
+                "laravel",
+                "laravel-essentials",
+                "package",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/nunomaduro/essentials/issues",
+                "source": "https://github.com/nunomaduro/essentials/tree/main"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/enunomaduro",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2025-04-17T17:11:04+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -11571,7 +11650,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "nunomaduro/essentials": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
