@@ -8,6 +8,7 @@ use App\Enums\SocialPlatform;
 use App\Models\Twitch;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 final class LiveTwitchStreams extends Command
 {
@@ -23,21 +24,48 @@ final class LiveTwitchStreams extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Check which Twitch streamers are currently live';
 
     /**
      * Execute the console command.
      */
     public function handle(): void
     {
-        Twitch::query()->each(function (Twitch $twitch): void {
+        // Record start time
+        $startTime = microtime(true);
+        
+        $this->info('Starting LiveTwitchStreams check...');
+        
+        $totalStreams = 0;
+        $liveStreams = 0;
+        
+        Twitch::query()->each(function (Twitch $twitch) use (&$totalStreams, &$liveStreams): void {
+            $totalStreams++;
             $url = SocialPlatform::TWITCH->getBaseUrl().urlencode($twitch->name);
 
             $html = Http::get($url)->body();
+            
+            $isLive = mb_strpos($html, '"isLiveBroadcast":true') !== false;
+            
+            if ($isLive) {
+                $liveStreams++;
+            }
 
             $twitch->update([
-                'is_live' => mb_strpos($html, '"isLiveBroadcast":true') !== false,
+                'is_live' => $isLive,
             ]);
         });
+        
+        // Calculate execution time
+        $endTime = microtime(true);
+        $executionTime = round($endTime - $startTime, 2);
+        
+        $message = "LiveTwitchStreams completed in {$executionTime} seconds. Checked {$totalStreams} streams, found {$liveStreams} live.";
+        
+        // Output to console
+        $this->info($message);
+        
+        // Log information
+        Log::info($message);
     }
 }

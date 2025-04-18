@@ -20,8 +20,11 @@ final class DatabaseSeeder extends Seeder
             // RoleSeeder::class,
             UserSeeder::class,
             TeamSeeder::class,
-            GameSeeder::class,
             LeagueSeeder::class,
+            FixtureSeeder::class,
+            GameSeeder::class,
+            TwitchSeeder::class,
+            DiscordSeeder::class,
         ]);
     }
 }
