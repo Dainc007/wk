@@ -34,12 +34,6 @@ final class User extends Authenticatable implements FilamentUser, HasMedia
      *
      * @var list<string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'last_seen_at',
-    ];
 
     /**
      * The attributes that should be hidden for serialization.

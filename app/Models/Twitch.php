@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 final class Twitch extends Model
 {
-
     use HasFactory;
+
     public static function getProfileUrl(string $profileName): string
     {
         return SocialPlatform::TWITCH->getBaseUrl().$profileName;

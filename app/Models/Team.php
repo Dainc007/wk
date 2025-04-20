@@ -59,6 +59,25 @@ final class Team extends Model implements HasMedia
         return $this->belongsToMany(League::class);
     }
 
+    public function federations(): BelongsToMany
+    {
+        return $this->belongsToMany(Federation::class);
+    }
+
+    public function leagueSeasons(): BelongsToMany
+    {
+        return $this->belongsToMany(LeagueSeason::class, 'league_season_team')
+            ->withPivot(['points', 'played', 'wins', 'draws', 'losses', 'scored', 'coincided'])
+            ->withTimestamps();
+    }
+
+    public function currentLeagueSeason()
+    {
+        return $this->leagueSeasons()
+            ->where('status', 'active')
+            ->first();
+    }
+
     public function twitch(): MorphOne
     {
         return $this->morphOne(Twitch::class, 'twitchable');
