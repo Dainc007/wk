@@ -10,6 +10,8 @@ final class UserPlayedGamesWidget extends ChartWidget
 {
     protected static ?string $heading = 'Games Played';
 
+    protected string|int|array $columnSpan = 1;
+
     protected static ?string $pollingInterval = null;
 
     protected static ?string $maxHeight = '300px';

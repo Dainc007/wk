@@ -12,11 +12,14 @@ use Illuminate\Database\Eloquent\Builder;
 
 final class LatestStreamers extends BaseWidget
 {
+    protected string|int|array $columnSpan = 1;
+
     public function table(Table $table): Table
     {
         return $table
             ->query(
                 Twitch::query()
+                    ->orderByDesc('is_live')
             )
             ->columns([
                 Tables\Columns\TextColumn::make('twitchable.name')

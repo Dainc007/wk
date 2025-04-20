@@ -12,6 +12,8 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 final class StatsOverview extends BaseWidget
 {
+    protected string|int|array $columnSpan = 1;
+
     protected function getStats(): array
     {
         return [
@@ -32,7 +34,6 @@ final class StatsOverview extends BaseWidget
             Stat::make('Unique views', '192.1k')
                 ->description('32k increase')
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
-                ->chart([7, 2, 10, 3, 15, 4, 17])
                 ->color('success'),
 
         ];

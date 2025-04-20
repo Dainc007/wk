@@ -6,22 +6,26 @@ namespace App\Filament\App\Widgets;
 
 use App\Filament\App\Resources\EventResource;
 use App\Models\Event;
+use Illuminate\Database\Eloquent\Model;
 use Saade\FilamentFullCalendar\Data\EventData;
 use Saade\FilamentFullCalendar\Widgets\FullCalendarWidget;
 
 final class CalendarWidget extends FullCalendarWidget
 {
-    public string|null|\Illuminate\Database\Eloquent\Model $model = Event::class;
+    public string|null|Model $model = Event::class;
+
+    protected string|int|array $columnSpan = 1;
 
     public function config(): array
     {
         return [
             'firstDay' => 1,
             'headerToolbar' => [
-                'left' => 'dayGridWeek,dayGridDay',
+                'left' => 'dayGridMonth, dayGridWeek',
                 'center' => 'title',
                 'right' => 'prev,next today',
             ],
+            'initialView' => 'dayGridMonth',
         ];
     }
 
