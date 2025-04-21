@@ -6,6 +6,7 @@ namespace App\Filament\App\Pages;
 
 use App\Filament\App\Widgets\CalendarWidget;
 use App\Filament\App\Widgets\LatestStreamers;
+use App\Filament\App\Widgets\NextEventWidget;
 use App\Filament\App\Widgets\StatsOverview;
 use App\Filament\App\Widgets\UserPlayedGamesWidget;
 use Filament\Pages\Page;
@@ -20,6 +21,7 @@ final class Dashboard extends Page
     {
         return [
             StatsOverview::class,
+            NextEventWidget::class,
             UserPlayedGamesWidget::class,
             LatestStreamers::class,
             CalendarWidget::class,
@@ -30,5 +32,10 @@ final class Dashboard extends Page
     {
         return [
         ];
+    }
+
+    private function getColumns(): int
+    {
+        return 3;
     }
 }

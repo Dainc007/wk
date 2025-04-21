@@ -19,8 +19,6 @@ final class LeagueResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-trophy';
 
-    protected static ?int $navigationSort = 3;
-
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form
@@ -32,6 +30,7 @@ final class LeagueResource extends Resource
                 Forms\Components\TextInput::make('level')
                     ->required()
                     ->numeric()
+                    ->hiddenOn('view')
                     ->default(0),
                 Forms\Components\TextInput::make('country')
                     ->required(),

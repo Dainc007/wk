@@ -18,7 +18,7 @@ final class CreateTeam extends CreateRecord
         return auth()->user()->can('create_team') && auth()->user()->teams()->count() < 4;
     }
 
-    private function afterCreate(): void
+    protected function afterCreate(): void
     {
         auth()->user()->teams()->attach($this->getRecord());
     }

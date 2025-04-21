@@ -23,7 +23,7 @@ final class ViewLeague extends ViewRecord
     protected function getHeaderWidgets(): array
     {
         return [
-            LeagueTableWidget::make(),
+            LeagueTableWidget::make(['record' => $this->record]),
         ];
     }
 }

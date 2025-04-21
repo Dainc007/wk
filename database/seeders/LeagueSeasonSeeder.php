@@ -24,7 +24,7 @@ final class LeagueSeasonSeeder extends Seeder
                 $rows = $league->teams->map(function ($team) use ($season) {
                     return [
                         'team_id' => $team->id,
-                        'league_season_id' => $season->id
+                        'league_season_id' => $season->id,
                     ];
                 })->toArray();
 

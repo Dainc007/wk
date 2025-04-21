@@ -82,7 +82,7 @@ final class TeamResource extends Resource
     public static function getRelations(): array
     {
         return [
-            UsersRelationManager::class
+            UsersRelationManager::class,
         ];
     }
 
