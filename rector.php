@@ -23,10 +23,6 @@ return RectorConfig::configure()
         deadCode: true,
         codeQuality: true,
         typeDeclarations: true,
-        privatization: true,
         earlyReturn: true,
         strictBooleans: true
     );
-//    ->withTypeCoverageLevel(0)
-//    ->withDeadCodeLevel(0)
-//    ->withCodeQualityLevel(0);
