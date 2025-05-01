@@ -6,7 +6,9 @@ namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\TeamResource\Pages;
 use App\Filament\App\Resources\TeamResource\RelationManagers\UsersRelationManager;
+use App\Filament\Traits\HasActiveIcon;
 use App\Models\Team;
+use Asmit\FilamentMention\Forms\Components\RichMentionEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -18,6 +20,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 final class TeamResource extends Resource
 {
+    use HasActiveIcon;
+
     protected static ?string $model = Team::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
@@ -42,6 +46,13 @@ final class TeamResource extends Resource
                     ->disk('public'),
                 TextInput::make('name')
                     ->required()->unique(ignoreRecord: true),
+                RichMentionEditor::make('description')
+                    ->columnSpanFull()
+                    ->disableGrammarly()
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                    ])
+                    ->nullable(),
                 //                TextInput::make('discord.name')
                 //                    ->placeholder('Discord')
                 //                    ->unique(ignoreRecord: true),

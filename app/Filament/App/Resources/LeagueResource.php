@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\LeagueResource\Pages;
+use App\Filament\Traits\HasActiveIcon;
 use App\Models\League;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
 
 final class LeagueResource extends Resource
 {
+    use HasActiveIcon;
+
     protected static ?string $model = League::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-trophy';
@@ -26,6 +29,7 @@ final class LeagueResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->hiddenOn('view')
                     ->required(),
                 Forms\Components\TextInput::make('level')
                     ->required()
@@ -33,6 +37,7 @@ final class LeagueResource extends Resource
                     ->hiddenOn('view')
                     ->default(0),
                 Forms\Components\TextInput::make('country')
+                    ->hiddenOn('view')
                     ->required(),
             ]);
     }

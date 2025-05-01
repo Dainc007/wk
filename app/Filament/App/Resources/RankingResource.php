@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\RankingResource\Pages;
+use App\Filament\Traits\HasActiveIcon;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -12,6 +13,8 @@ use Filament\Tables\Table;
 
 final class RankingResource extends Resource
 {
+    use HasActiveIcon;
+
     //    protected static ?string $model = Ranking::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
