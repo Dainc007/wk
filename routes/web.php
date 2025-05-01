@@ -10,6 +10,11 @@ Route::get('/', function () {
     return redirect('/app');
 });
 
+//todo
+Route::get('/privacy-policy', function () {
+    return redirect()->back();
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
