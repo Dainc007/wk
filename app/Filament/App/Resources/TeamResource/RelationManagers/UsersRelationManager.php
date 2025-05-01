@@ -34,6 +34,10 @@ final class UsersRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('avatar')
+                    ->conversion('thumb')
+                    ->circular()
+                    ->collection('avatars'),
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('status'),

@@ -7,6 +7,7 @@ namespace App\Filament\Admin\Resources;
 use App\Enums\Countries;
 use App\Models\League;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -24,6 +25,7 @@ final class LeagueResource extends Resource
     {
         return $form
             ->schema([
+                SpatieMediaLibraryFileUpload::make('logo'),
                 TextInput::make('name')
                     ->required()
                     ->label('Country Name'),

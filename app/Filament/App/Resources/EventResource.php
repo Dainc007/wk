@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\EventResource\Pages;
+use App\Filament\Traits\HasActiveIcon;
 use App\Models\Event;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
@@ -15,6 +16,8 @@ use Filament\Tables\Table;
 
 final class EventResource extends Resource
 {
+    use HasActiveIcon;
+
     protected static ?string $model = Event::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

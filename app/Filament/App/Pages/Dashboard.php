@@ -9,10 +9,13 @@ use App\Filament\App\Widgets\LatestStreamers;
 use App\Filament\App\Widgets\NextEventWidget;
 use App\Filament\App\Widgets\StatsOverview;
 use App\Filament\App\Widgets\UserPlayedGamesWidget;
+use App\Filament\Traits\HasActiveIcon;
 use Filament\Pages\Page;
 
 final class Dashboard extends Page
 {
+    use HasActiveIcon;
+
     protected static ?string $navigationIcon = 'heroicon-o-home';
 
     protected static string $view = 'filament.app.pages.dashboard';

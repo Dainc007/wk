@@ -7,6 +7,7 @@ namespace App\Filament\App\Resources;
 use App\Enums\DefaultSettings;
 use App\Enums\SocialPlatform;
 use App\Filament\App\Resources\UserResource\Pages;
+use App\Filament\Traits\HasActiveIcon;
 use App\Models\User;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
@@ -20,6 +21,8 @@ use Filament\Tables\Table;
 
 final class UserResource extends Resource
 {
+    use HasActiveIcon;
+
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user';

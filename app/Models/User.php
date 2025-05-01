@@ -24,7 +24,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Tags\HasTags;
 
-final class User extends Authenticatable implements FilamentUser, HasMedia, MustVerifyEmail
+final class User extends Authenticatable implements FilamentUser, HasMedia
+    // ,MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory,

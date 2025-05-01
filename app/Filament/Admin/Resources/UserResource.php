@@ -8,8 +8,8 @@ use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Form;
-use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Table;
 use STS\FilamentImpersonate\Tables\Actions\Impersonate;
@@ -19,6 +19,8 @@ final class UserResource extends Resource
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form
     {
@@ -43,19 +45,13 @@ final class UserResource extends Resource
 
     public static function table(Table $table): Table
     {
-
-        foreach (User::all() as $user) {
-            Notification::make()
-                ->title('Message!')
-                ->broadcast($user);
-
-            $user->notify(Notification::make()->title('elo')->toBroadcast());
-        }
-
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('name')
+                    ->icon('heroicon-o-briefcase')
+                    ->iconPosition(IconPosition::After)
+                    ->copyable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('created_at')

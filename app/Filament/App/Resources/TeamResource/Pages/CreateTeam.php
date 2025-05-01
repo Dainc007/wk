@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\App\Resources\TeamResource\Pages;
 
 use App\Filament\App\Resources\TeamResource;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 
 final class CreateTeam extends CreateRecord
@@ -20,6 +21,15 @@ final class CreateTeam extends CreateRecord
 
     protected function afterCreate(): void
     {
-        auth()->user()->teams()->attach($this->getRecord());
+        $user = auth()->user();
+        $team = $this->getRecord();
+        $user->teams()->attach($team);
+        $user->notify(
+            Notification::make()
+                ->success()
+                ->title('Team Created!')
+                ->body($team->name.' has been created.')
+                ->toDatabase()
+        );
     }
 }
