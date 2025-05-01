@@ -23,6 +23,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use MarcoGermani87\FilamentCookieConsent\FilamentCookieConsent;
 use Saade\FilamentFullCalendar\FilamentFullCalendarPlugin;
 
 final class AppPanelProvider extends PanelProvider
@@ -39,13 +40,14 @@ final class AppPanelProvider extends PanelProvider
             ->id('app')
             ->path('app')
             ->login()
-//            ->brandName('Menago League')
-//            ->brandLogo(DefaultSettings::AvatarUrl->getUrl())
             ->registration(Register::class)
             ->defaultAvatarProvider(BoringAvatarsProvider::class)
             ->profile(EditProfile::class)
             ->passwordReset()
+            ->emailVerification()
             ->databaseTransactions()
+            ->databaseNotifications()
+            ->databaseNotificationsPolling('10s')
             ->maxContentWidth(MaxWidth::Full)
             ->colors([
                 'primary' => Color::Fuchsia,
@@ -72,6 +74,7 @@ final class AppPanelProvider extends PanelProvider
             ])
             ->plugins([
                 GlobalSearchModalPlugin::make(),
+                FilamentCookieConsent::make(),
                 FilamentFullCalendarPlugin::make(),
                 //                    ->schedulerLicenseKey()
                 //                    ->selectable()
