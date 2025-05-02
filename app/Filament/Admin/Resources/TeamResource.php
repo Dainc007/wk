@@ -34,6 +34,8 @@ final class TeamResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('users_count')
+                    ->counts('users')
             ])
             ->filters([
                 //
