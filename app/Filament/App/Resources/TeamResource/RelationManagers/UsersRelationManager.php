@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\App\Resources\TeamResource\RelationManagers;
 
+use App\Enums\PitchRoles;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -24,8 +25,9 @@ final class UsersRelationManager extends RelationManager
                     ->maxLength(255),
                 Forms\Components\Grid::make()->relationship('teams')
                     ->schema([
-                        TextInput::make('pitch_role'),
-                    ]),
+                        Forms\Components\Select::make('pitch_role')
+                            ->options(PitchRoles::class),
+                        ]),
             ]);
     }
 
@@ -40,8 +42,10 @@ final class UsersRelationManager extends RelationManager
                     ->collection('avatars'),
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('pitch_role'),
+                Tables\Columns\TextColumn::make('status')
+                ->badge(),
+                Tables\Columns\TextColumn::make('pitch_role')
+                ->badge(),
                 Tables\Columns\TextColumn::make('contract_signed_at'),
                 Tables\Columns\TextColumn::make('contract_terminated_at'),
 

@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use App\Filament\App\Auth\Login;
+use App\Filament\App\Auth\Register;
 use App\Filament\App\Pages\EditProfile;
-use App\Filament\App\Pages\Register;
 use App\Filament\AvatarProviders\BoringAvatarsProvider;
 use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
 use Exception;
@@ -39,7 +40,7 @@ final class AppPanelProvider extends PanelProvider
             ->default()
             ->id('app')
             ->path('app')
-            ->login()
+            ->login(Login::class)
             ->registration(Register::class)
             ->defaultAvatarProvider(BoringAvatarsProvider::class)
             ->profile(EditProfile::class)

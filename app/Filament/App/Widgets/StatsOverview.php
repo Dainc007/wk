@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\App\Widgets;
 
 use App\Models\Team;
+use App\Models\User;
 use App\Services\UserService;
 use Filament\Support\Enums\IconPosition;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
@@ -31,7 +32,7 @@ final class StatsOverview extends BaseWidget
                     IconPosition::After
                 )->color('warning'),
 
-            Stat::make('Unique views', '192.1k')
+            Stat::make('Users Count', User::count())
                 ->description('32k increase')
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
                 ->color('success'),
