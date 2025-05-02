@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\App\Pages;
+namespace App\Filament\App\Auth;
 
 use App\Filament\App\Resources\UserResource;
 use Filament\Forms\Form;
