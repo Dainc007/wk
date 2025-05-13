@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Admin\Resources;
 
 use App\Enums\Countries;
+use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\League;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
@@ -17,6 +18,8 @@ use Filament\Tables\Table;
 
 final class LeagueResource extends Resource
 {
+    use HasTranslatedLabels;
+
     protected static ?string $model = League::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

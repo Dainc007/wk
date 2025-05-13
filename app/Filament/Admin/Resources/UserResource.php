@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Admin\Resources;
 
+use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\CheckboxList;
@@ -16,6 +17,8 @@ use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 
 final class UserResource extends Resource
 {
+    use HasTranslatedLabels;
+
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

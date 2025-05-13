@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources;
 use App\Enums\PitchRoles;
 use App\Filament\Admin\Resources\TeamUserResource\Pages;
 use App\Filament\Admin\Resources\TeamUserResource\RelationManagers;
+use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\TeamUser;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TeamUserResource extends Resource
 {
+    use HasTranslatedLabels;
+
     protected static ?string $model = TeamUser::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

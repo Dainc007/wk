@@ -6,6 +6,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ActivityLogResource\Pages;
 use App\Filament\Traits\HasActiveIcon;
+use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\ActivityLog;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -16,6 +17,8 @@ use Filament\Tables\Table;
 final class ActivityLogResource extends Resource
 {
     use HasActiveIcon;
+    use HasTranslatedLabels;
+
 
     protected static ?string $model = ActivityLog::class;
 
