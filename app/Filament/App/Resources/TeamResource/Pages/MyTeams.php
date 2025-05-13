@@ -7,8 +7,9 @@ namespace App\Filament\App\Resources\TeamResource\Pages;
 use App\Filament\App\Resources\TeamResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Tables\Table;
 
-final class ListTeams extends ListRecords
+final class MyTeams extends ListRecords
 {
     protected static string $resource = TeamResource::class;
 
@@ -17,5 +18,12 @@ final class ListTeams extends ListRecords
         return [
             Actions\CreateAction::make(),
         ];
+    }
+
+    public function table(Table $table): Table
+    {
+        return parent::table($table)->query(
+            auth()->user()->teams->toQuery()
+        );
     }
 }

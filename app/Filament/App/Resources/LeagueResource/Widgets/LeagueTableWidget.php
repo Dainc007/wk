@@ -6,10 +6,12 @@ namespace App\Filament\App\Resources\LeagueResource\Widgets;
 
 use App\Models\League;
 use App\Models\LeagueTable;
+use Filament\Support\Colors\Color;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 final class LeagueTableWidget extends BaseWidget
 {
@@ -26,10 +28,10 @@ final class LeagueTableWidget extends BaseWidget
         return $table
             ->heading($this->getTableHeading())
             ->paginated(false)
+            ->hiddenFilterIndicators(true)
             ->filters([
                 Tables\Filters\SelectFilter::make('season')
                     ->selectablePlaceholder(false)
-
                     ->label('Season')
                     ->options(function () {
                         if (! $this->record instanceof League) {
@@ -66,13 +68,37 @@ final class LeagueTableWidget extends BaseWidget
             })
             ->emptyStateHeading('No teams in this league season')
             ->emptyStateDescription('This league season has no teams or standings yet.')
+            ->striped()
             ->columns([
+                Tables\Columns\ColorColumn::make('color')
+                    ->sortable(false)
+                    ->label('')
+                    ->state(static function ($rowLoop) {
+                        $numOfRecords = $rowLoop->count;
+                        if($rowLoop->iteration <= 4) {
+                            return 'green';
+                        }
+
+                        if($rowLoop->iteration <= 6) {
+                            return 'orange';
+                        }
+
+                        if($rowLoop->iteration === 18) {
+                            return 'pink';
+                        }
+
+                        if($rowLoop->iteration > 18) {
+                            return 'red';
+                        }
+
+                        return '';
+                    }),
                 Tables\Columns\TextColumn::make('position')
-                    ->label('Pos')
+                    ->sortable(false)
+                    ->label('')
                     ->state(static function ($rowLoop): int {
                         return $rowLoop->iteration;
-                    })
-                    ->width('5%'),
+                    }),
 
                 Tables\Columns\TextColumn::make('team_name')
                     ->label('Team')

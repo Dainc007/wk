@@ -14,6 +14,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -27,6 +28,8 @@ final class TeamResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $recordTitleAttribute = 'name';
+
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -65,13 +68,11 @@ final class TeamResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->modifyQueryUsing(function (Builder $query): void {
-            $query->whereHas('users', function (Builder $query): void {
-                $query->where('users.id', auth()->id());
-            });
-        })
+        return $table
             ->columns([
-                Tables\Columns\SpatieMediaLibraryImageColumn::make('teamLogo')->collection('teamLogos'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('teamLogo')
+                    ->circular()
+                    ->collection('teamLogos'),
                 TextColumn::make('name'),
             ])
             ->filters([
@@ -81,7 +82,7 @@ final class TeamResource extends Resource
                 // todo all teams or own team?
                 Tables\Actions\EditAction::make()->visible(auth()->user()->can('edit_team')),
                 Tables\Actions\DeleteAction::make()->visible(auth()->user()->can('delete_team')),
-
+                ViewAction::make()
             ])
             ->headerActions([
             ])
@@ -100,7 +101,7 @@ final class TeamResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTeams::route('/'),
+            'index' => Pages\MyTeams::route('/'),
             'create' => Pages\CreateTeam::route('/create'),
             'edit' => Pages\EditTeam::route('/{record}/edit'),
             'view' => Pages\ViewTeam::route('/{record}'),

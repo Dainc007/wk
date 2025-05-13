@@ -22,7 +22,9 @@ final class FederationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 4;
+    protected static ?string $recordTitleAttribute = 'name';
+
 
     public static function form(Form $form): Form
     {
