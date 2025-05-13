@@ -22,8 +22,13 @@ final class MyTeams extends ListRecords
 
     public function table(Table $table): Table
     {
-        return parent::table($table)->query(
-            auth()->user()->teams->toQuery()
-        );
+        $user = auth()->user();
+        
+        return parent::table($table)
+            ->query(
+                $user->teams()->exists() 
+                    ? $user->teams->toQuery()
+                    : TeamResource::getEloquentQuery()->where('id', null)
+            );
     }
 }

@@ -41,4 +41,9 @@ final class Dashboard extends Page
     {
         return 3;
     }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.pages.dashboard');
+    }
 }

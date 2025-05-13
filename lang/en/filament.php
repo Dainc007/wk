@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'pages' => [
+        'dashboard' => 'Dashboard',
+    ],
     'resources' => [
         'user' => [
             'navigation' => [
@@ -56,5 +59,14 @@ return [
                 'plural_label' => 'Games',
             ],
         ],
+        'federation' => [
+            'navigation' => [
+                'label' => 'Federations',
+            ],
+            'model' => [
+                'label' => 'Federation',
+                'plural_label' => 'Federations',
+            ],
+        ],
     ],
-]; 
+];

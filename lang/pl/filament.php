@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'pages' => [
+        'dashboard' => 'Panel',
+    ],
     'resources' => [
         'user' => [
             'navigation' => [
@@ -54,6 +57,15 @@ return [
             'model' => [
                 'label' => 'Mecz',
                 'plural_label' => 'Mecze',
+            ],
+        ],
+        'federation' => [
+            'navigation' => [
+                'label' => 'Federacje',
+            ],
+            'model' => [
+                'label' => 'Federacja',
+                'plural_label' => 'Federacje',
             ],
         ],
     ],

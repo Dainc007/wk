@@ -7,6 +7,7 @@ namespace App\Filament\App\Resources;
 use App\Filament\App\Resources\FederationResource\Pages;
 use App\Filament\App\Resources\FederationResource\RelationManagers;
 use App\Filament\Traits\HasActiveIcon;
+use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\Federation;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,7 +17,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 final class FederationResource extends Resource
 {
-    use HasActiveIcon;
+    use HasActiveIcon,
+        HasTranslatedLabels;
 
     protected static ?string $model = Federation::class;
 

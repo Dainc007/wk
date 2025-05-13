@@ -7,6 +7,7 @@ namespace App\Filament\App\Resources;
 use App\Filament\App\Resources\TeamResource\Pages;
 use App\Filament\App\Resources\TeamResource\RelationManagers\UsersRelationManager;
 use App\Filament\Traits\HasActiveIcon;
+use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\Team;
 use Asmit\FilamentMention\Forms\Components\RichMentionEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
@@ -21,7 +22,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 final class TeamResource extends Resource
 {
-    use HasActiveIcon;
+    use HasActiveIcon,
+        HasTranslatedLabels;
 
     protected static ?string $model = Team::class;
 
@@ -114,15 +116,6 @@ final class TeamResource extends Resource
         return true;
     }
 
-    public static function getNavigationLabel(): string
-    {
-        return __('My Teams');
-    }
-
-    public static function getLabel(): ?string
-    {
-        return __('My Teams');
-    }
 
     public static function canCreate(): bool
     {
