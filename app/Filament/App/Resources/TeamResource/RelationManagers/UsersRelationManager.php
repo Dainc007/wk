@@ -27,7 +27,7 @@ final class UsersRelationManager extends RelationManager
                     ->schema([
                         Forms\Components\Select::make('pitch_role')
                             ->options(PitchRoles::class),
-                        ]),
+                    ]),
             ]);
     }
 
@@ -43,9 +43,9 @@ final class UsersRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('status')
-                ->badge(),
+                    ->badge(),
                 Tables\Columns\TextColumn::make('pitch_role')
-                ->badge(),
+                    ->badge(),
                 Tables\Columns\TextColumn::make('contract_signed_at'),
                 Tables\Columns\TextColumn::make('contract_terminated_at'),
 

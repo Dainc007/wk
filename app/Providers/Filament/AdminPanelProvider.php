@@ -68,7 +68,7 @@ final class AdminPanelProvider extends PanelProvider
             ->plugins([
                 FilamentShieldPlugin::make(),
                 FilamentSpatieRolesPermissionsPlugin::make(),
-                FilamentSpatieLaravelBackupPlugin::make()
+                FilamentSpatieLaravelBackupPlugin::make(),
             ])
             ->authMiddleware([
                 Authenticate::class,

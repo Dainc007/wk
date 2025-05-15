@@ -6,12 +6,10 @@ namespace App\Filament\App\Resources\LeagueResource\Widgets;
 
 use App\Models\League;
 use App\Models\LeagueTable;
-use Filament\Support\Colors\Color;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 final class LeagueTableWidget extends BaseWidget
 {
@@ -73,21 +71,21 @@ final class LeagueTableWidget extends BaseWidget
                 Tables\Columns\ColorColumn::make('color')
                     ->sortable(false)
                     ->label('')
-                    ->state(static function ($rowLoop) {
+                    ->state(static function ($rowLoop): string {
                         $numOfRecords = $rowLoop->count;
-                        if($rowLoop->iteration <= 4) {
+                        if ($rowLoop->iteration <= 4) {
                             return 'green';
                         }
 
-                        if($rowLoop->iteration <= 6) {
+                        if ($rowLoop->iteration <= 6) {
                             return 'orange';
                         }
 
-                        if($rowLoop->iteration === 18) {
+                        if ($rowLoop->iteration === 18) {
                             return 'pink';
                         }
 
-                        if($rowLoop->iteration > 18) {
+                        if ($rowLoop->iteration > 18) {
                             return 'red';
                         }
 

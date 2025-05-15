@@ -1,16 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Filament\App\Auth;
 
-use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
-use Filament\Facades\Filament;
 use Illuminate\Validation\ValidationException;
-use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 
-class Login extends \Filament\Pages\Auth\Login
+final class Login extends \Filament\Pages\Auth\Login
 {
     protected function getForms(): array
     {
@@ -42,7 +40,7 @@ class Login extends \Filament\Pages\Auth\Login
         $loginType = filter_var($data['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
 
         return [
-          $loginType => $data['login'],
+            $loginType => $data['login'],
             'password' => $data['password'],
         ];
     }

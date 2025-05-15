@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Admin\Resources\TeamUserResource\Pages;
 
 use App\Filament\Admin\Resources\TeamUserResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListTeamUsers extends ListRecords
+final class ListTeamUsers extends ListRecords
 {
     protected static string $resource = TeamUserResource::class;
 

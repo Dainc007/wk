@@ -1,20 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\StatisticTypeResource\Pages;
-use App\Filament\Admin\Resources\StatisticTypeResource\RelationManagers;
+use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\StatisticType;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class StatisticTypeResource extends Resource
+final class StatisticTypeResource extends Resource
 {
+    use HasTranslatedLabels,
+        HasTranslatedLabels;
+
     protected static ?string $model = StatisticType::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chart-bar';

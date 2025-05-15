@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Admin\Resources\StatisticTypeResource\Pages;
 
 use App\Filament\Admin\Resources\StatisticTypeResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateStatisticType extends CreateRecord
+final class CreateStatisticType extends CreateRecord
 {
     protected static string $resource = StatisticTypeResource::class;
 }

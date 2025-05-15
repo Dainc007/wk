@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\TeamUser;
 use Illuminate\Database\Seeder;
 
 final class DatabaseSeeder extends Seeder

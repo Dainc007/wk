@@ -18,14 +18,14 @@ use Filament\Tables\Table;
 
 final class LeagueResource extends Resource
 {
-    use HasTranslatedLabels;
+    use HasTranslatedLabels,
+        HasTranslatedLabels;
 
     protected static ?string $model = League::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-trophy';
 
     protected static ?string $navigationGroup = 'Competitions';
-
 
     public static function form(Form $form): Form
     {

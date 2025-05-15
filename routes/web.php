@@ -10,7 +10,7 @@ Route::get('/', function () {
     return redirect('/app');
 });
 
-//todo
+// todo
 Route::get('/privacy-policy', function () {
     return redirect()->back();
 });

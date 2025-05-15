@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Admin\Resources\TeamUserResource\Pages;
 
 use App\Filament\Admin\Resources\TeamUserResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditTeamUser extends EditRecord
+final class EditTeamUser extends EditRecord
 {
     protected static string $resource = TeamUserResource::class;
 

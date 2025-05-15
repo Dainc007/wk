@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Enums;
@@ -7,7 +8,7 @@ use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
-enum PitchRoles : string implements HasLabel, HasColor, HasIcon
+enum PitchRoles: string implements HasColor, HasIcon, HasLabel
 {
     case STAR = 'Star';
     case FIRST_ELEVEN = 'First Eleven';
@@ -43,5 +44,4 @@ enum PitchRoles : string implements HasLabel, HasColor, HasIcon
             default => null,
         };
     }
-
 }

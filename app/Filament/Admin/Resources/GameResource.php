@@ -14,13 +14,15 @@ use Filament\Tables\Table;
 
 final class GameResource extends Resource
 {
-    use HasTranslatedLabels;
+    use HasTranslatedLabels,
+        HasTranslatedLabels;
 
     protected static ?string $model = Game::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-sparkles';
 
     protected static ?string $navigationGroup = 'Competitions';
+
     public static function form(Form $form): Form
     {
         return $form

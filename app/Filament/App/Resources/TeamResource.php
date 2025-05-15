@@ -18,7 +18,6 @@ use Filament\Tables;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 
 final class TeamResource extends Resource
 {
@@ -84,7 +83,7 @@ final class TeamResource extends Resource
                 // todo all teams or own team?
                 Tables\Actions\EditAction::make()->visible(auth()->user()->can('edit_team')),
                 Tables\Actions\DeleteAction::make()->visible(auth()->user()->can('delete_team')),
-                ViewAction::make()
+                ViewAction::make(),
             ])
             ->headerActions([
             ])
@@ -115,7 +114,6 @@ final class TeamResource extends Resource
     {
         return true;
     }
-
 
     public static function canCreate(): bool
     {

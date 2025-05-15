@@ -19,10 +19,10 @@ final class ActivityLogResource extends Resource
     use HasActiveIcon;
     use HasTranslatedLabels;
 
-
     protected static ?string $model = ActivityLog::class;
 
     protected static ?string $navigationIcon = 'phosphor-log';
+
     protected static ?string $navigationGroup = 'Logs';
 
     public static function form(Form $form): Form

@@ -17,15 +17,16 @@ use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 
 final class UserResource extends Resource
 {
-    use HasTranslatedLabels;
+    use HasTranslatedLabels,
+        HasTranslatedLabels;
 
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-circle';
 
     protected static ?string $recordTitleAttribute = 'name';
-    protected static ?string $navigationGroup = 'Competitions';
 
+    protected static ?string $navigationGroup = 'Competitions';
 
     public static function form(Form $form): Form
     {

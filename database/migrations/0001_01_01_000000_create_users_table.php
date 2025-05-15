@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')
-            ->nullable(); //Socialite Filament Requires that
+                ->nullable(); // Socialite Filament Requires that
             $table->rememberToken();
             $table->timestamps();
 

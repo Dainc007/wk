@@ -27,7 +27,7 @@ final class TeamUserSeeder extends Seeder
 
             for ($i = 0; $i < $teamCount; $i++) {
                 // The last record should be active, all others inactive
-                $isLast = ($i == $teamCount - 1);
+                $isLast = ($i === $teamCount - 1);
 
                 // Create chronological dates for each team
                 $contractSigned = $startDate->copy()->addMonths($i * 6);

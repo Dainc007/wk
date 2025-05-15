@@ -41,10 +41,10 @@ final class Register extends FilamentRegister
 
         $user->notify(
             Notification::make()
-            ->warning()
-            ->title('Note:')
-            ->body('Your account is not verified yet. Please check your email for verification link.')
-            ->toDatabase()
+                ->warning()
+                ->title('Note:')
+                ->body('Your account is not verified yet. Please check your email for verification link.')
+                ->toDatabase()
         );
 
         return $user;

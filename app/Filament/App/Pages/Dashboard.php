@@ -20,6 +20,11 @@ final class Dashboard extends Page
 
     protected static string $view = 'filament.app.pages.dashboard';
 
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.pages.dashboard');
+    }
+
     protected function getHeaderWidgets(): array
     {
         return [
@@ -40,10 +45,5 @@ final class Dashboard extends Page
     private function getColumns(): int
     {
         return 3;
-    }
-
-    public static function getNavigationLabel(): string
-    {
-        return __('filament.pages.dashboard');
     }
 }

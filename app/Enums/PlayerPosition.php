@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Enums;
 
-enum PlayerPosition : string
+enum PlayerPosition: string
 {
     case STRIKER = 'striker';
     case MIDFIELDER = 'midfielder';

@@ -1,13 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Database\Seeders;
 
 use App\Models\StatisticType;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class StatisticTypeSeeder extends Seeder
+final class StatisticTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class StatisticTypeSeeder extends Seeder
     public function run(): void
     {
         $statisticsData = [];
-        
+
         // Process team statistics
         $teamStats = json_decode(file_get_contents(database_path('data/statistics.json')), true);
         foreach ($teamStats as $category => $data) {

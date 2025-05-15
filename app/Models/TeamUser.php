@@ -30,7 +30,7 @@ final class TeamUser extends Pivot
     public function casts(): array
     {
         return [
-            'pitch_role' => PitchRoles::class
+            'pitch_role' => PitchRoles::class,
         ];
     }
 }

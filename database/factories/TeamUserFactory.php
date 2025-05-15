@@ -35,13 +35,12 @@ final class TeamUserFactory extends Factory
      * Configure the factory to create multiple team users for a specific user
      * with chronologically ordered contracts
      *
-     * @param int $userId The user ID to create team history for
-     * @param int $count Number of teams to generate (default 3)
-     * @return self
+     * @param  int  $userId  The user ID to create team history for
+     * @param  int  $count  Number of teams to generate (default 3)
      */
     public function createUserTeamHistory(int $userId, int $count = 3): self
     {
-        return $this->state(function (array $attributes) use ($userId, $count) {
+        return $this->state(function (array $attributes) use ($userId) {
             // This will be overridden in the TeamUser::factory()->count()->sequence() call
             return [
                 'user_id' => $userId,
@@ -51,8 +50,6 @@ final class TeamUserFactory extends Factory
 
     /**
      * Configure the factory to set a team user as inactive
-     *
-     * @return self
      */
     public function inactive(): self
     {

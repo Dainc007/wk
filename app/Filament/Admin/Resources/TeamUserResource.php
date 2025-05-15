@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Admin\Resources;
 
 use App\Enums\PitchRoles;
 use App\Filament\Admin\Resources\TeamUserResource\Pages;
-use App\Filament\Admin\Resources\TeamUserResource\RelationManagers;
 use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\TeamUser;
 use Filament\Forms;
@@ -12,12 +13,11 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class TeamUserResource extends Resource
+final class TeamUserResource extends Resource
 {
-    use HasTranslatedLabels;
+    use HasTranslatedLabels,
+        HasTranslatedLabels;
 
     protected static ?string $model = TeamUser::class;
 
@@ -35,8 +35,7 @@ class TeamUserResource extends Resource
                 Forms\Components\TextInput::make('user_id')
                     ->required()
                     ->numeric(),
-                Forms\Components\Select::make('status')
-                ,
+                Forms\Components\Select::make('status'),
                 Forms\Components\Select::make('pitch_role')
                     ->options(PitchRoles::class),
                 Forms\Components\DateTimePicker::make('contract_signed_at'),
@@ -51,7 +50,7 @@ class TeamUserResource extends Resource
                 Tables\Columns\TextColumn::make('team.name'),
                 Tables\Columns\TextColumn::make('user.name'),
                 Tables\Columns\TextColumn::make('status')
-                ->badge(),
+                    ->badge(),
                 Tables\Columns\TextColumn::make('pitch_role')
                     ->badge(),
                 Tables\Columns\TextColumn::make('contract_signed_at')

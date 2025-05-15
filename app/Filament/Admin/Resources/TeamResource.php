@@ -14,7 +14,8 @@ use Filament\Tables\Table;
 
 final class TeamResource extends Resource
 {
-    use HasTranslatedLabels;
+    use HasTranslatedLabels,
+        HasTranslatedLabels;
 
     protected static ?string $model = Team::class;
 
