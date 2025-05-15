@@ -10,6 +10,7 @@ use App\Filament\App\Widgets\LatestStreamers;
 use App\Filament\App\Widgets\StatsOverview;
 use App\Filament\App\Widgets\UserPlayedGamesWidget;
 use Filament\Resources\Pages\ViewRecord;
+use App\Filament\App\Resources\TeamResource\Widgets\TeamKit;
 
 final class ViewTeam extends ViewRecord
 {
@@ -22,6 +23,13 @@ final class ViewTeam extends ViewRecord
             UserPlayedGamesWidget::class,
             LatestStreamers::class,
             CalendarWidget::class,
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            TeamKit::class,
         ];
     }
 }
