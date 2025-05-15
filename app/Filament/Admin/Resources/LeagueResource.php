@@ -22,7 +22,10 @@ final class LeagueResource extends Resource
 
     protected static ?string $model = League::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-trophy';
+
+    protected static ?string $navigationGroup = 'Competitions';
+
 
     public static function form(Form $form): Form
     {

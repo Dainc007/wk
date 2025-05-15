@@ -18,9 +18,11 @@ final class TeamResource extends Resource
 
     protected static ?string $model = Team::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $recordTitleAttribute = 'name';
+
+    protected static ?string $navigationGroup = 'Competitions';
 
     public static function form(Form $form): Form
     {

@@ -24,7 +24,7 @@ final class DatabaseSeeder extends Seeder
             FederationLeagueTeamSeeder::class,
             LeagueSeasonSeeder::class,
             TwitchSeeder::class,
-            TeamUserSeeder::class,
+            // TeamUserSeeder::class,
         ]);
     }
 }

@@ -23,6 +23,7 @@ final class ActivityLogResource extends Resource
     protected static ?string $model = ActivityLog::class;
 
     protected static ?string $navigationIcon = 'phosphor-log';
+    protected static ?string $navigationGroup = 'Logs';
 
     public static function form(Form $form): Form
     {
