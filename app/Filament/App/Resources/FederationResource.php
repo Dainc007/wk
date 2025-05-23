@@ -84,4 +84,10 @@ final class FederationResource extends Resource
             'edit' => Pages\EditFederation::route('/{record}/edit'),
         ];
     }
+
+    // temporary
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 }

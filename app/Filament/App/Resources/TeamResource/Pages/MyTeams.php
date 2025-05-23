@@ -13,6 +13,8 @@ final class MyTeams extends ListRecords
 {
     protected static string $resource = TeamResource::class;
 
+    protected static ?string $title = '';
+
     public function table(Table $table): Table
     {
         $user = auth()->user();

@@ -20,6 +20,8 @@ final class Dashboard extends Page
 
     protected static string $view = 'filament.app.pages.dashboard';
 
+    protected static ?string $title = '';
+
     public static function getNavigationLabel(): string
     {
         return __('filament.pages.dashboard');

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\App\Auth;
 
 use App\Filament\App\Resources\UserResource;
+use App\Models\Role;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Auth\Register as FilamentRegister;
@@ -30,7 +31,10 @@ final class Register extends FilamentRegister
     protected function handleRegistration(array $data): Model
     {
         $user = $this->getUserModel()::create($data);
-        $user->assignRole('user');
+
+        $role = Role::findOrCreate('user', 'web');
+        $user->assignRole($role);
+
         $user->notify(
             Notification::make()
                 ->success()

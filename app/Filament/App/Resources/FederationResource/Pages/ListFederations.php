@@ -12,6 +12,8 @@ final class ListFederations extends ListRecords
 {
     protected static string $resource = FederationResource::class;
 
+    protected static ?string $title = '';
+
     protected function getHeaderActions(): array
     {
         return [

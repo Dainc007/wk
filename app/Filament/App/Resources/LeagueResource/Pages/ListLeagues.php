@@ -12,6 +12,8 @@ final class ListLeagues extends ListRecords
 {
     protected static string $resource = LeagueResource::class;
 
+    protected static ?string $title = '';
+
     protected function getHeaderActions(): array
     {
         return [

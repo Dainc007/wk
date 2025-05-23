@@ -108,4 +108,10 @@ final class LeagueResource extends Resource
     {
         return false;
     }
+
+    // temporary
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 }

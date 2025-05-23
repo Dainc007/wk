@@ -15,6 +15,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -70,6 +71,22 @@ final class TeamResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->emptyStateHeading('No posts yet')
+            ->emptyStateDescription('Once you write your first post, it will appear here.')
+            ->emptyStateIcon('heroicon-o-bookmark')
+            ->emptyStateActions([
+                Action::make('create')
+                    ->label('Create')
+                    ->url(route('dashboard'))
+                    ->icon('heroicon-m-plus')
+                    ->button(),
+                Action::make('join')
+                    ->label('Join')
+                    ->url(route('dashboard'))
+                    ->icon('heroicon-m-user')
+                    ->button(),
+            ])
+
             ->columns([
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('teamLogo')
                     ->circular()
