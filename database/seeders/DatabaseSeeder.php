@@ -15,13 +15,15 @@ final class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            PermissionSeeder::class,
-            RoleSeeder::class,
+            ShieldSeeder::class,
             UserSeeder::class,
             TeamSeeder::class,
-            GameSeeder::class,
+            FederationSeeder::class,
             LeagueSeeder::class,
+            FederationLeagueTeamSeeder::class,
+            LeagueSeasonSeeder::class,
+            TwitchSeeder::class,
+            // TeamUserSeeder::class,
         ]);
-
     }
 }

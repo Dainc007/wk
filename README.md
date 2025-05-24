@@ -6,7 +6,7 @@
   </a>
 </p>
 
-> This project aims to establish an e-sports league for EA's Pro Clubs mode. It will provide a competitive platform for players to showcase their skills, engage in structured matches, and foster community interaction. Our goal is to create an exciting environment for players and fans alike, promoting teamwork and sportsmanship.
+> This project aims to establish an e-sports league for EA's Pro Clubs mode. It will provide a competitive platform for players to showcase their skills, engage in structured matches, and foster community interaction. Our goal is to create an exciting environment for players and fans alike, promoting teamwork and sportsmanship. 
 
 ### 🏠 [Homepage](https://www.heinze.com.pl)
 
@@ -69,7 +69,7 @@ This project leverages several powerful packages to enhance functionality:
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Dainc007/wk/issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Dainc007/wk/issues). 
 
 ## Show your support
 

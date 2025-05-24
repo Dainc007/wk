@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Resources\TeamResource\Pages;
+use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\Team;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,9 +14,16 @@ use Filament\Tables\Table;
 
 final class TeamResource extends Resource
 {
+    use HasTranslatedLabels,
+        HasTranslatedLabels;
+
     protected static ?string $model = Team::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    protected static ?string $navigationGroup = 'Competitions';
 
     public static function form(Form $form): Form
     {
@@ -24,6 +31,7 @@ final class TeamResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required(),
+                Forms\Components\TextInput::make('description'),
             ]);
     }
 
@@ -33,6 +41,9 @@ final class TeamResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime(),
             ])
             ->filters([
                 //
@@ -41,9 +52,7 @@ final class TeamResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
@@ -57,9 +66,9 @@ final class TeamResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Admin\Resources\TeamResource\Pages\ListTeams::route('/'),
-            'create' => \App\Filament\Admin\Resources\TeamResource\Pages\CreateTeam::route('/create'),
-            'edit' => \App\Filament\Admin\Resources\TeamResource\Pages\EditTeam::route('/{record}/edit'),
+            'index' => TeamResource\Pages\ListTeams::route('/'),
+            'create' => TeamResource\Pages\CreateTeam::route('/create'),
+            'edit' => TeamResource\Pages\EditTeam::route('/{record}/edit'),
         ];
     }
 }

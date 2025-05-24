@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -23,7 +22,7 @@ final class TeamPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Team $team): bool
+    public function view(User $user): bool
     {
         return $user->can('view_team');
     }
@@ -39,7 +38,7 @@ final class TeamPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Team $team): bool
+    public function update(User $user): bool
     {
         return $user->can('update_team');
     }
@@ -47,7 +46,7 @@ final class TeamPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Team $team): bool
+    public function delete(User $user): bool
     {
         return $user->can('delete_team');
     }
@@ -63,7 +62,7 @@ final class TeamPolicy
     /**
      * Determine whether the user can permanently delete.
      */
-    public function forceDelete(User $user, Team $team): bool
+    public function forceDelete(User $user): bool
     {
         return $user->can('force_delete_team');
     }
@@ -79,7 +78,7 @@ final class TeamPolicy
     /**
      * Determine whether the user can restore.
      */
-    public function restore(User $user, Team $team): bool
+    public function restore(User $user): bool
     {
         return $user->can('restore_team');
     }
@@ -95,7 +94,7 @@ final class TeamPolicy
     /**
      * Determine whether the user can replicate.
      */
-    public function replicate(User $user, Team $team): bool
+    public function replicate(User $user): bool
     {
         return $user->can('replicate_team');
     }

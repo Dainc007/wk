@@ -1,0 +1,637 @@
+{
+    "summary": {
+        "name": "Summary",
+        "statistics": [
+            {
+                "name": "Player of the Match",
+                "type": "boolean",
+                "description": "Whether player was man of the match"
+            },
+            {
+                "name": "Match Ratings",
+                "type": "float",
+                "description": "Player's match rating"
+            },
+            {
+                "name": "Goals",
+                "type": "integer",
+                "description": "Number of goals scored"
+            },
+            {
+                "name": "Assists",
+                "type": "integer",
+                "description": "Number of assists"
+            },
+            {
+                "name": "Shots",
+                "type": "integer",
+                "description": "Total number of shots"
+            },
+            {
+                "name": "Shot Accuracy",
+                "type": "float",
+                "description": "Percentage of shots on target"
+            },
+            {
+                "name": "Passes",
+                "type": "integer",
+                "description": "Total number of passes"
+            },
+            {
+                "name": "Pass Accuracy",
+                "type": "float",
+                "description": "Percentage of successful passes"
+            },
+            {
+                "name": "Dribbles",
+                "type": "integer",
+                "description": "Number of dribbles attempted"
+            },
+            {
+                "name": "Dribble Success Rate",
+                "type": "float",
+                "description": "Percentage of successful dribbles"
+            },
+            {
+                "name": "Tackles",
+                "type": "integer",
+                "description": "Number of tackles attempted"
+            },
+            {
+                "name": "Tackle Success Rate",
+                "type": "float",
+                "description": "Percentage of successful tackles"
+            },
+            {
+                "name": "Offsides",
+                "type": "integer",
+                "description": "Number of offsides"
+            },
+            {
+                "name": "Fouls Committed",
+                "type": "integer",
+                "description": "Number of fouls committed"
+            },
+            {
+                "name": "Possession Won",
+                "type": "integer",
+                "description": "Number of times possession was won"
+            },
+            {
+                "name": "Possession Lost",
+                "type": "integer",
+                "description": "Number of times possession was lost"
+            },
+            {
+                "name": "Minutes Played vs Team Average",
+                "type": "float",
+                "description": "Minutes played compared to team average"
+            },
+            {
+                "name": "Distance Covered vs Team Average",
+                "type": "float",
+                "description": "Distance covered compared to team average in kilometers"
+            },
+            {
+                "name": "Distance Sprinted vs Team Average",
+                "type": "float",
+                "description": "Distance sprinted compared to team average in kilometers"
+            },
+            {
+                "name": "Overall Position Heat Map",
+                "type": "json",
+                "description": "Heat map of player's position throughout the match"
+            }
+        ]
+    },
+    "possession": {
+        "name": "Possession",
+        "statistics": [
+            {
+                "name": "Possession %",
+                "type": "float",
+                "description": "Percentage of time player had possession"
+            },
+            {
+                "name": "Dribbles",
+                "type": "integer",
+                "description": "Number of dribbles attempted"
+            },
+            {
+                "name": "Dribbles Completed",
+                "type": "integer",
+                "description": "Number of successful dribbles"
+            },
+            {
+                "name": "Dribbles Success Rate",
+                "type": "float",
+                "description": "Percentage of successful dribbles"
+            },
+            {
+                "name": "Distance Dribbled",
+                "type": "float",
+                "description": "Total distance dribbled in kilometers"
+            },
+            {
+                "name": "Tackled by Opponent",
+                "type": "integer",
+                "description": "Number of times tackled by opponent"
+            },
+            {
+                "name": "Corners Won",
+                "type": "integer",
+                "description": "Number of corners won"
+            },
+            {
+                "name": "Fouls Won",
+                "type": "integer",
+                "description": "Number of fouls won"
+            },
+            {
+                "name": "Penalties Won",
+                "type": "integer",
+                "description": "Number of penalties won"
+            },
+            {
+                "name": "Assists from Dummy",
+                "type": "integer",
+                "description": "Number of assists from dummy runs"
+            },
+            {
+                "name": "Regular Dribble",
+                "type": "float",
+                "description": "Percentage of regular dribbles"
+            },
+            {
+                "name": "Shield Dribble",
+                "type": "float",
+                "description": "Percentage of shield dribbles"
+            },
+            {
+                "name": "Strafe Dribble",
+                "type": "float",
+                "description": "Percentage of strafe dribbles"
+            },
+            {
+                "name": "Agile Dribble",
+                "type": "float",
+                "description": "Percentage of agile dribbles"
+            },
+            {
+                "name": "Dribble by Type",
+                "type": "json",
+                "description": "Breakdown of dribbles by type (Beat, Skillmove Beat, Nutmeg, Knock-ons)"
+            },
+            {
+                "name": "Ball Possession Heat Map",
+                "type": "json",
+                "description": "Heat map of ball possession"
+            },
+            {
+                "name": "Dribble Beat Zone",
+                "type": "json",
+                "description": "Distribution of dribble beats by zone"
+            },
+            {
+                "name": "Skill Moves Zone",
+                "type": "json",
+                "description": "Distribution of skill moves by zone"
+            },
+            {
+                "name": "Nutmegs Zone",
+                "type": "json",
+                "description": "Distribution of nutmegs by zone"
+            },
+            {
+                "name": "Knock-on Zone",
+                "type": "json",
+                "description": "Distribution of knock-ons by zone"
+            }
+        ]
+    },
+    "shooting": {
+        "name": "Shooting",
+        "statistics": [
+            {
+                "name": "Goals Excluding Penalties",
+                "type": "integer",
+                "description": "Number of goals scored excluding penalties"
+            },
+            {
+                "name": "xG Excluding Penalties",
+                "type": "float",
+                "description": "Expected goals excluding penalties"
+            },
+            {
+                "name": "Shots",
+                "type": "integer",
+                "description": "Total number of shots"
+            },
+            {
+                "name": "Shots on Target",
+                "type": "integer",
+                "description": "Number of shots on target"
+            },
+            {
+                "name": "Shots Off Target",
+                "type": "integer",
+                "description": "Number of shots off target"
+            },
+            {
+                "name": "Shots Blocked",
+                "type": "integer",
+                "description": "Number of blocked shots"
+            },
+            {
+                "name": "Shot Accuracy",
+                "type": "float",
+                "description": "Percentage of shots on target"
+            },
+            {
+                "name": "Free Kick Goals",
+                "type": "integer",
+                "description": "Number of goals from free kicks"
+            },
+            {
+                "name": "Penalty Kick Goals",
+                "type": "integer",
+                "description": "Number of goals from penalties"
+            },
+            {
+                "name": "Shoot-out Goals",
+                "type": "integer",
+                "description": "Number of goals in shoot-outs"
+            },
+            {
+                "name": "Assists from Shots",
+                "type": "integer",
+                "description": "Number of assists from shots"
+            },
+            {
+                "name": "Shooting Types",
+                "type": "json",
+                "description": "Breakdown of shots by type (Normal, Finesse, Header, Power, Volley, Chip, Set Pieces)"
+            },
+            {
+                "name": "All Shots Heat Map",
+                "type": "json",
+                "description": "Heat map of all shots"
+            },
+            {
+                "name": "Goals Heat Map",
+                "type": "json",
+                "description": "Heat map of goals"
+            },
+            {
+                "name": "Off Target Heat Map",
+                "type": "json",
+                "description": "Heat map of off-target shots"
+            },
+            {
+                "name": "Blocked Heat Map",
+                "type": "json",
+                "description": "Heat map of blocked shots"
+            },
+            {
+                "name": "Saved Heat Map",
+                "type": "json",
+                "description": "Heat map of saved shots"
+            }
+        ]
+    },
+    "passing": {
+        "name": "Passing",
+        "statistics": [
+            {
+                "name": "Assists",
+                "type": "integer",
+                "description": "Number of assists"
+            },
+            {
+                "name": "Expected Assists",
+                "type": "float",
+                "description": "Expected assists (xA)"
+            },
+            {
+                "name": "Second Assist",
+                "type": "integer",
+                "description": "Number of second assists"
+            },
+            {
+                "name": "Key Passes",
+                "type": "integer",
+                "description": "Number of key passes"
+            },
+            {
+                "name": "Players Beaten by Passes",
+                "type": "integer",
+                "description": "Number of players beaten by passes"
+            },
+            {
+                "name": "Passes",
+                "type": "integer",
+                "description": "Total number of passes"
+            },
+            {
+                "name": "Completed",
+                "type": "integer",
+                "description": "Number of completed passes"
+            },
+            {
+                "name": "Intercepted",
+                "type": "integer",
+                "description": "Number of intercepted passes"
+            },
+            {
+                "name": "Pass Accuracy",
+                "type": "float",
+                "description": "Percentage of successful passes"
+            },
+            {
+                "name": "Offside Passes",
+                "type": "integer",
+                "description": "Number of offside passes"
+            },
+            {
+                "name": "Crosses Attempted",
+                "type": "integer",
+                "description": "Number of crosses attempted"
+            },
+            {
+                "name": "Successful Crosses",
+                "type": "integer",
+                "description": "Number of successful crosses"
+            },
+            {
+                "name": "Crosses Blocked",
+                "type": "integer",
+                "description": "Number of blocked crosses"
+            },
+            {
+                "name": "Crosses Success Rate",
+                "type": "float",
+                "description": "Percentage of successful crosses"
+            },
+            {
+                "name": "Passes Attempted Under Pressure",
+                "type": "integer",
+                "description": "Number of passes attempted under pressure"
+            },
+            {
+                "name": "Passes Completed Under Pressure",
+                "type": "integer",
+                "description": "Number of passes completed under pressure"
+            },
+            {
+                "name": "Passing Types",
+                "type": "json",
+                "description": "Breakdown of passes by type (Ground, Lob, Through, Lobbed Through, Cross, Set Pieces)"
+            },
+            {
+                "name": "All Passes Zone",
+                "type": "json",
+                "description": "Distribution of all passes by zone"
+            },
+            {
+                "name": "Completed Passes Zone",
+                "type": "json",
+                "description": "Distribution of completed passes by zone"
+            },
+            {
+                "name": "Assists Zone",
+                "type": "json",
+                "description": "Distribution of assists by zone"
+            },
+            {
+                "name": "Intercepted Passes Zone",
+                "type": "json",
+                "description": "Distribution of intercepted passes by zone"
+            },
+            {
+                "name": "Offsides Zone",
+                "type": "json",
+                "description": "Distribution of offside passes by zone"
+            }
+        ]
+    },
+    "defending": {
+        "name": "Defending",
+        "statistics": [
+            {
+                "name": "Standing Tackles",
+                "type": "integer",
+                "description": "Number of standing tackles attempted"
+            },
+            {
+                "name": "Standing Tackles Won",
+                "type": "integer",
+                "description": "Number of successful standing tackles"
+            },
+            {
+                "name": "Standing Tackles Success Rate",
+                "type": "float",
+                "description": "Percentage of successful standing tackles"
+            },
+            {
+                "name": "Sliding Tackles",
+                "type": "integer",
+                "description": "Number of sliding tackles attempted"
+            },
+            {
+                "name": "Sliding Tackles Won",
+                "type": "integer",
+                "description": "Number of successful sliding tackles"
+            },
+            {
+                "name": "Sliding Tackles Success Rate",
+                "type": "float",
+                "description": "Percentage of successful sliding tackles"
+            },
+            {
+                "name": "Interceptions",
+                "type": "integer",
+                "description": "Number of interceptions"
+            },
+            {
+                "name": "Blocks",
+                "type": "integer",
+                "description": "Number of blocks"
+            },
+            {
+                "name": "Clearances",
+                "type": "integer",
+                "description": "Number of clearances"
+            },
+            {
+                "name": "Offsides Caused",
+                "type": "integer",
+                "description": "Number of offsides caused"
+            },
+            {
+                "name": "Offensive Duels",
+                "type": "integer",
+                "description": "Number of offensive duels"
+            },
+            {
+                "name": "Offensive Duels Won",
+                "type": "integer",
+                "description": "Number of offensive duels won"
+            },
+            {
+                "name": "Offensive Duels Success Rate",
+                "type": "float",
+                "description": "Percentage of successful offensive duels"
+            },
+            {
+                "name": "Defensive Duels",
+                "type": "integer",
+                "description": "Number of defensive duels"
+            },
+            {
+                "name": "Defensive Duels Won",
+                "type": "integer",
+                "description": "Number of defensive duels won"
+            },
+            {
+                "name": "Defensive Duels Success Rate",
+                "type": "float",
+                "description": "Percentage of successful defensive duels"
+            },
+            {
+                "name": "Aerial Duels",
+                "type": "integer",
+                "description": "Number of aerial duels"
+            },
+            {
+                "name": "Aerial Duels Won",
+                "type": "integer",
+                "description": "Number of aerial duels won"
+            },
+            {
+                "name": "Aerial Duels Success Rate",
+                "type": "float",
+                "description": "Percentage of successful aerial duels"
+            },
+            {
+                "name": "Beaten by Opponent",
+                "type": "integer",
+                "description": "Number of times beaten by opponent"
+            },
+            {
+                "name": "Beaten in Defensive Third",
+                "type": "integer",
+                "description": "Number of times beaten in defensive third"
+            },
+            {
+                "name": "Beaten in Box",
+                "type": "integer",
+                "description": "Number of times beaten in box"
+            },
+            {
+                "name": "Fouls Committed",
+                "type": "integer",
+                "description": "Number of fouls committed"
+            },
+            {
+                "name": "Penalties Committed",
+                "type": "integer",
+                "description": "Number of penalties committed"
+            },
+            {
+                "name": "Own Goals",
+                "type": "integer",
+                "description": "Number of own goals"
+            },
+            {
+                "name": "All Tackle Zones",
+                "type": "json",
+                "description": "Distribution of all tackles by zone"
+            },
+            {
+                "name": "Standing Tackle Zones",
+                "type": "json",
+                "description": "Distribution of standing tackles by zone"
+            },
+            {
+                "name": "Sliding Tackle Zones",
+                "type": "json",
+                "description": "Distribution of sliding tackles by zone"
+            },
+            {
+                "name": "Interception Zone",
+                "type": "json",
+                "description": "Distribution of interceptions by zone"
+            }
+        ]
+    },
+    "goalkeeping": {
+        "name": "Goalkeeping",
+        "statistics": [
+            {
+                "name": "Shots Against",
+                "type": "integer",
+                "description": "Number of shots faced"
+            },
+            {
+                "name": "Shots on Target",
+                "type": "integer",
+                "description": "Number of shots on target faced"
+            },
+            {
+                "name": "Saves",
+                "type": "integer",
+                "description": "Number of saves made"
+            },
+            {
+                "name": "Goals Conceded",
+                "type": "integer",
+                "description": "Number of goals conceded"
+            },
+            {
+                "name": "Save Success Rate",
+                "type": "float",
+                "description": "Percentage of shots saved"
+            },
+            {
+                "name": "Punch Saves",
+                "type": "integer",
+                "description": "Number of punch saves"
+            },
+            {
+                "name": "Rush Saves",
+                "type": "integer",
+                "description": "Number of rush saves"
+            },
+            {
+                "name": "Penalty Saves",
+                "type": "integer",
+                "description": "Number of penalty saves"
+            },
+            {
+                "name": "Penalty Goals Conceded",
+                "type": "integer",
+                "description": "Number of penalty goals conceded"
+            },
+            {
+                "name": "Shoot-out Saves",
+                "type": "integer",
+                "description": "Number of shoot-out saves"
+            },
+            {
+                "name": "Shoot-out Goals Conceded",
+                "type": "integer",
+                "description": "Number of shoot-out goals conceded"
+            },
+            {
+                "name": "Shot Types Saved",
+                "type": "json",
+                "description": "Breakdown of saves by shot type (Normal, Finesse, Header, Power, Volley, Chip, Set Pieces)"
+            },
+            {
+                "name": "Shots Saved Zone",
+                "type": "json",
+                "description": "Distribution of saves by zone"
+            }
+        ]
+    }
+} 

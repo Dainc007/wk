@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace App\Filament\Admin\Resources;
 
 use App\Enums\Countries;
-use App\Filament\Resources\LeagueResource\Pages;
+use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\League;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,14 +18,20 @@ use Filament\Tables\Table;
 
 final class LeagueResource extends Resource
 {
+    use HasTranslatedLabels,
+        HasTranslatedLabels;
+
     protected static ?string $model = League::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-trophy';
+
+    protected static ?string $navigationGroup = 'Competitions';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                SpatieMediaLibraryFileUpload::make('logo'),
                 TextInput::make('name')
                     ->required()
                     ->label('Country Name'),
@@ -80,9 +87,9 @@ final class LeagueResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Admin\Resources\LeagueResource\Pages\ListLeagues::route('/'),
-            'create' => \App\Filament\Admin\Resources\LeagueResource\Pages\CreateLeague::route('/create'),
-            'edit' => \App\Filament\Admin\Resources\LeagueResource\Pages\EditLeague::route('/{record}/edit'),
+            'index' => LeagueResource\Pages\ListLeagues::route('/'),
+            'create' => LeagueResource\Pages\CreateLeague::route('/create'),
+            'edit' => LeagueResource\Pages\EditLeague::route('/{record}/edit'),
         ];
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Resources\GameResource\Pages;
+use App\Filament\Traits\HasTranslatedLabels;
 use App\Models\Game;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,9 +14,14 @@ use Filament\Tables\Table;
 
 final class GameResource extends Resource
 {
+    use HasTranslatedLabels,
+        HasTranslatedLabels;
+
     protected static ?string $model = Game::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-sparkles';
+
+    protected static ?string $navigationGroup = 'Competitions';
 
     public static function form(Form $form): Form
     {
@@ -83,9 +88,9 @@ final class GameResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Admin\Resources\GameResource\Pages\ListGames::route('/'),
-            'create' => \App\Filament\Admin\Resources\GameResource\Pages\CreateGame::route('/create'),
-            'edit' => \App\Filament\Admin\Resources\GameResource\Pages\EditGame::route('/{record}/edit'),
+            'index' => GameResource\Pages\ListGames::route('/'),
+            'create' => GameResource\Pages\CreateGame::route('/create'),
+            'edit' => GameResource\Pages\EditGame::route('/{record}/edit'),
         ];
     }
 }

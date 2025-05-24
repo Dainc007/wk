@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Traits\HasStatistics;
 use Database\Factories\GameFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 final class Game extends Model
 {
     /** @use HasFactory<GameFactory> */
-    use HasFactory;
+    use HasFactory,
+        HasStatistics;
 
     protected $fillable = [
         'host_id',

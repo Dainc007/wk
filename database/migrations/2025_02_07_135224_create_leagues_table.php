@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('level')->default(0);
-            $table->string('country');
+            $table->string('region');
+            $table->foreignId('federation_id')->constrained('federations');
 
-            $table->unique(['country', 'level']);
+            $table->unique(['region', 'level']);
             $table->timestamps();
         });
     }

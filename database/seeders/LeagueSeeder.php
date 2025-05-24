@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Enums\Countries;
-use App\Models\League;
+use App\Models\Federation;
 use Illuminate\Database\Seeder;
+
+// todo AI generated. double check it
 
 final class LeagueSeeder extends Seeder
 {
@@ -15,14 +16,17 @@ final class LeagueSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (Countries::cases() as $country) {
-            for ($level = 0; $level <= 2; $level++) {
-                League::create([
-                    'name' => $country->name,
-                    'country' => $country->value,
+        foreach (Federation::all() as $federation) {
+            $leagues = [];
+            for ($level = 1; $level <= 2; $level++) {
+                $leagues[] = [
+                    'name' => 'Liga '.$level,
+                    'region' => $federation->region.'_'.uniqid(),
                     'level' => $level,
-                ]);
+                    'federation_id' => $federation->id,
+                ];
             }
+            $federation->leagues()->insert($leagues);
         }
     }
 }

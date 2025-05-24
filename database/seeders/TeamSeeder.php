@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Team;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Http;
 
 final class TeamSeeder extends Seeder
 {
@@ -14,6 +15,22 @@ final class TeamSeeder extends Seeder
      */
     public function run(): void
     {
-        Team::factory(1000)->create();
+        $request = Http::withHeaders([
+            'X-Auth-Token' => config('services.football_data.token'),
+        ])->get('http://api.football-data.org/v4/teams/', ['limit' => 500]);
+
+        if ($request->successful()) {
+            $response = $request->json();
+            $teams = [];
+            foreach ($response['teams'] as $key => $team) {
+                $teams[] = [
+                    'name' => $team['name'],
+                ];
+            }
+            Team::insert($teams);
+
+        } else {
+            Team::factory(500)->create();
+        }
     }
 }
